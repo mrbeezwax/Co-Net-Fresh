@@ -82,7 +82,6 @@ export default function AlertDialog(props) {
     inputField: {
       fontSize: "15px",
     },
-    multiselectContainer: {},
   };
 
   const marks = [

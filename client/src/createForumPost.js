@@ -194,7 +194,6 @@ class CreateForumPost extends Component {
         fontSize: "15px",
         marginTop: "10px",
       },
-      multiselectContainer: {},
     };
 
     const dividerGridStyle = {

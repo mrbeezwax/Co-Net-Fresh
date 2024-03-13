@@ -174,7 +174,6 @@ class Profile extends Component {
       inputField: {
         fontSize: "15px",
       },
-      multiselectContainer: {},
     };
 
     if (!this.state.editing) {
@@ -193,9 +192,6 @@ class Profile extends Component {
               color="primary"
               size="large"
               className={styles.editProfile}
-              onClick={() => {
-                this.changeText("Unfollow");
-              }}
             >
               {" "}
               {this.state.text}

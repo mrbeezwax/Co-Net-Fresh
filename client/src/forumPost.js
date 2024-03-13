@@ -233,16 +233,16 @@ class ForumPost extends Component {
 
   onUpVote(twice) {
     if (twice) {
-      this.state.votes += 2;
+      this.setState({ votes: this.state.votes + 2 });
     } else {
-      this.state.votes++;
+      this.setState({ votes: this.state.votes + 1 });
     }
     this.handleVote("+");
   }
 
   onDownVote(twice) {
-    if (twice) this.state.votes -= 2;
-    else this.state.votes--;
+    if (twice) this.setState({ votes: this.state.votes - 2 });
+    else this.setState({ votes: this.state.votes - 1 });
     this.handleVote("-");
   }
 

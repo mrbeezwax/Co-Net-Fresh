@@ -157,7 +157,7 @@ class forumPost extends Component {
                         variant="h6"
                         className={styles.forumPostTitle}
                       >
-                        Looking for Duo in Ranked, I'm Gold
+                        {"Looking for Duo in Ranked, I'm Gold"}
                       </Typography>
                       <Typography
                         className={styles.userNameForum}

@@ -473,7 +473,6 @@ class Profile extends Component {
       inputField: {
         fontSize: "15px",
       },
-      multiselectContainer: {},
     };
 
     const {

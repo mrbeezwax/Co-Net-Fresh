@@ -192,7 +192,6 @@ export default function AlertDialog() {
     inputField: {
       fontSize: "15px",
     },
-    multiselectContainer: {},
   };
 
   return (

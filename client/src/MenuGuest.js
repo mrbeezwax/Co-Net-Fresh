@@ -187,7 +187,7 @@ export default function PrimarySearchAppBar(props) {
   );
 
   return (
-    <div className="hi" style={{ margin: 0 }} className={classes.grow}>
+    <div className="hi" style={{ margin: 0 }}>
       <AppBar
         style={{ margin: 0, padding: 10 }}
         color="transparent"

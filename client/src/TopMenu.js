@@ -255,12 +255,7 @@ export default function PrimarySearchAppBar(props) {
   );
 
   return isGuest ? (
-    <div
-      id="TopMenu"
-      className="hi"
-      style={{ margin: 0 }}
-      className={classes.grow}
-    >
+    <div id="TopMenu" className="hi" style={{ margin: 0 }}>
       <AppBar
         style={{ margin: 0, padding: 10 }}
         color="transparent"
@@ -366,12 +361,7 @@ export default function PrimarySearchAppBar(props) {
       </AppBar>
     </div>
   ) : (
-    <div
-      id="TopMenu"
-      className="hi"
-      style={{ margin: 0 }}
-      className={classes.grow}
-    >
+    <div id="TopMenu" className="hi" style={{ margin: 0 }}>
       <AppBar
         style={{ margin: 0, padding: 10 }}
         color="transparent"

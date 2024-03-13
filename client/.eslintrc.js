@@ -30,5 +30,7 @@ module.exports = {
               "argsIgnorePattern": "^_",
           },
       ],
+      "react/prop-types": "off",
+      "react/no-deprecated": "warn",
     },
 }

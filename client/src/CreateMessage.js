@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from "@material-ui/core/Grid";
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from "@material-ui/core/Typography";
 import TopMenu from "./TopMenu";
 import axios from "axios";
@@ -200,7 +198,6 @@ class CreateMessage extends Component {
         fontSize: "15px",
         marginTop: "10px",
       },
-      multiselectContainer: {},
     };
 
     const dividerGridStyle = {

@@ -1,33 +1,21 @@
 import Modal from "@material-ui/core/Modal";
-import React, { Component, useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 //import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/styles";
-import { Route, BrowserRouter as Router } from "react-router-dom";
-import Feed from "./Feed";
-import { Dimensions } from "react";
 import logo from "./logo.png";
 import bgd from "./background.jpeg";
 import axios from "axios";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     transform: "translateZ(0)",
     height: 768,
-    flexGrow: 1
+    flexGrow: 1,
   },
 
   modal: {
@@ -37,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     backgroundImage: "url(" + bgd + ")",
     backgroundSize: "cover",
-    overflow: "hidden"
+    overflow: "hidden",
   },
   paper: {
     width: 400,
@@ -48,8 +36,8 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     marginBottom: 200,
-    marginRight: 400
-  }
+    marginRight: 400,
+  },
 }));
 
 function onSignIn(e, history, pass, uname) {
@@ -63,13 +51,13 @@ function onSignIn(e, history, pass, uname) {
       `http://localhost:${process.env.PORT}/users/signin`,
       {
         username: username,
-        password: password
+        password: password,
       },
       {
-        withCredentials: true
+        withCredentials: true,
       }
     )
-    .then(json => {
+    .then((json) => {
       if (json.data.success) {
         history.push("/");
       } else {
@@ -124,7 +112,6 @@ export default function ServerModal(props) {
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    onClick={}
                   >
                     Sign in with Steam
                   </Button>
