@@ -1,0 +1,42 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.13",
+    "@mui/material": "^5.15.13",
+    "@mui/styles": "^5.15.13",
+    "algoliasearch": "^4.22.1",
+    "axios": "^1.6.7",
+    "fuzzball": "^2.1.2",
+    "multiselect-react-dropdown": "^2.0.25",
+    "react": "^17.0.2",
+    "react-dom": "^18.2.0",
+    "react-instantsearch-dom": "^6.4.0",
+    "react-router-dom": "^6.22.3",
+    "react-select": "^5.8.0",
+    "react-timezone": "^2.4.0",
+    "socket.io-client": "^4.7.4",
+    "status-indicator": "^1.0.9",
+    "typeface-roboto": "1.1.13"
+  },
+  "proxy": "http://localhost:3001",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0"
+  }
+}
