@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import TopMenu from "./TopMenu";
 import axios from "axios";
 import { createMuiTheme } from "@material-ui/core/styles";
 import styles from "./main.module.css";
 import Typography from "@material-ui/core/Typography";
-import Menu from "./ProfileMenu.js";
 import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
 import EditIcon from "@material-ui/icons/Edit";
 import TextField from "@material-ui/core/TextField";
 import CheckIcon from "@material-ui/icons/Check";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 const monthNames = [
   "January",
@@ -45,7 +41,7 @@ class forumComment extends Component {
       avatar: "",
       isEdit: false,
       isDeleted: false,
-      commentBody: this.props.body
+      commentBody: this.props.body,
     };
   }
 
@@ -111,7 +107,7 @@ class forumComment extends Component {
   }
 
   handleSave() {
-    if (this.state.commentBody === '') {
+    if (this.state.commentBody === "") {
       alert("Comment cannot be empty");
       return;
     }
@@ -175,15 +171,22 @@ class forumComment extends Component {
               <Avatar src={avatar} className={styles.smallSize} />
             </Grid>
             <Grid item xs={10}>
-              <Typography onClick={() => this.props.history.push(`/profile/${this.props.author}`)} style={{cursor: 'pointer'}} className={styles.userNameComment} display="inline">
+              <Typography
+                onClick={() =>
+                  this.props.history.push(`/profile/${this.props.author}`)
+                }
+                style={{ cursor: "pointer" }}
+                className={styles.userNameComment}
+                display="inline"
+              >
                 {this.props.author}{" "}
               </Typography>
               <Typography className={styles.timeStamp} display="inline">
                 {timestamp}
               </Typography>
-              {!this.state.isEdit ? 
+              {!this.state.isEdit ? (
                 editButton
-               : (
+              ) : (
                 <div style={{ float: "right" }}>
                   <Button
                     className={styles.editCommentButton}

@@ -1,17 +1,11 @@
 import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import TopMenu from "./TopMenu";
 import axios from "axios";
 import { createMuiTheme } from "@material-ui/core/styles";
 import styles from "./main.module.css";
-import profilePic from "./commentPhoto.jpg";
 import Typography from "@material-ui/core/Typography";
-import Menu from "./ProfileMenu.js";
 import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
-import profilePic2 from "./profilePic.png";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "@material-ui/core";
 

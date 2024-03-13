@@ -1,36 +1,15 @@
 import React, { Component } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 //import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
-import { Link as LinkR } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import ReactDOM from "react-dom";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import IconButton from "@material-ui/core/IconButton";
-import InfoIcon from "@material-ui/icons/Info";
 import TopMenu from "./TopMenu";
 import axios from "axios";
 import { createMuiTheme } from "@material-ui/core/styles";
-import styles from "./App.css";
-import leaguePhoto from "./leaguePhoto.jpg";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import mainStyles from "./main.module.css";
 import Divider from "@material-ui/core/Divider";
@@ -275,7 +254,11 @@ class Forum extends Component {
         : "";
 
       const renderCard = (
-        <Card key={card.postID} className={mainStyles.postSpacing} id={"post" + index}>
+        <Card
+          key={card.postID}
+          className={mainStyles.postSpacing}
+          id={"post" + index}
+        >
           <CardContent className={mainStyles.forumCard}>
             <Grid container spacing={1}>
               <Grid item xs={2}>
@@ -302,7 +285,13 @@ class Forum extends Component {
                     fontsize={18}
                     align="center"
                   >
-                    <Link id={"title" + index++} style={{color: "#A4A4A4"}} href={`/forumPost/${card.postID}`}>{card.title}</Link>
+                    <Link
+                      id={"title" + index++}
+                      style={{ color: "#A4A4A4" }}
+                      href={`/forumPost/${card.postID}`}
+                    >
+                      {card.title}
+                    </Link>
                   </Typography>
                 </div>
                 <Typography

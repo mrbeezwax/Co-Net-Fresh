@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import TopMenu from "./TopMenu";
 import axios from "axios";
 import { createMuiTheme } from "@material-ui/core/styles";
 import styles from "./main.module.css";
-import profilePic from "./commentPhoto.jpg";
 import Typography from "@material-ui/core/Typography";
-import Menu from "./ProfileMenu.js";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 import { Link } from "@material-ui/core";
 
@@ -20,10 +13,11 @@ class player extends Component {
     super(props);
 
     this.state = {
-      avatar: "https://res.cloudinary.com/co-net-pix/image/upload/v1586238488/default_user_avatar.jpg",
+      avatar:
+        "https://res.cloudinary.com/co-net-pix/image/upload/v1586238488/default_user_avatar.jpg",
       bio: "",
       userTags: [],
-      status: ""
+      status: "",
     };
   }
 
@@ -81,7 +75,7 @@ class player extends Component {
     };
 
     const status = this.state.status;
-    
+
     // Active, In-Game, Offline, Away
     const statusColorCodes = {
       active: "#26AD00",
@@ -133,7 +127,8 @@ class player extends Component {
                 {this.state.bio}
               </Typography>
               <Typography variant="body1" className={styles.commentBody}>
-                Tags: {this.state.userTags.length > 0 ? this.state.userTags : "None" }
+                Tags:{" "}
+                {this.state.userTags.length > 0 ? this.state.userTags : "None"}
               </Typography>
             </Grid>
           </Grid>

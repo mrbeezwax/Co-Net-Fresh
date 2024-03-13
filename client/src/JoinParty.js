@@ -1,26 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import styles from "./main.module.css";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import TextField from "@material-ui/core/TextField";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import { Multiselect } from "multiselect-react-dropdown";
 import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
-import profilePic from "./commentPhoto.jpg";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import UserCard from "./UserCard";
-import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Link } from "@material-ui/core";
 import axios from "axios";
@@ -138,7 +126,11 @@ export default function AlertDialog(props) {
     );
   } else if (props.party.partyMembers.length + 1 >= props.party.maxPlayers) {
     partyButton = (
-      <Typography variant="contained" className={mainStyles.gameTags} style={{ float: "right" }}>
+      <Typography
+        variant="contained"
+        className={mainStyles.gameTags}
+        style={{ float: "right" }}
+      >
         Party is Full
       </Typography>
     );

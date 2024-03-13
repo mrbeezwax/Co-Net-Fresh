@@ -21,7 +21,6 @@ import Messages from "./messages";
 import Game from "./game";
 import CreateMessage from "./CreateMessage";
 
-
 const routing = (
   <Router history={history}>
     <div>
@@ -49,12 +48,15 @@ const routing = (
       />
       <Route path="/createForumPost" component={CreateForumPost} />
       <Route path="/editForumPost" component={editForumPost} />
-      <Route path="/myaccount" component={AccountSettings}
-       />
+      <Route path="/myaccount" component={AccountSettings} />
       <Route path="/messages" component={Messages} />
       <Route path="/createmessage" component={CreateMessage} />
 
-      <Route exact path="/game/:gameID" render={(props) => <Game {...props} />}/>
+      <Route
+        exact
+        path="/game/:gameID"
+        render={(props) => <Game {...props} />}
+      />
     </div>
   </Router>
 );

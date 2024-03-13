@@ -1,16 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import mainStyles from './main.module.css';
-import axios from 'axios';
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import mainStyles from "./main.module.css";
 
 const useStyles = makeStyles((theme) => ({
-
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
@@ -18,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect(props) {
   const classes = useStyles();
-  const [game, setGame] = React.useState('');
-  // const [gameCmps, setGameCmps] = React.useState([]);
+  const [game, setGame] = React.useState("");
 
   // Retrieve list of games
   // axios.get("http://localhost:3001/games")
@@ -38,7 +33,7 @@ export default function SimpleSelect(props) {
     setGame(event.target.value);
     props.onGameSelect(event);
   };
-  
+
   // let itemsToRender = 20;
 
   // When user scrolls to bottom, load more
@@ -65,12 +60,10 @@ export default function SimpleSelect(props) {
   // }
   return (
     <div>
-    
-  
-      <FormControl variant="outlined" className = {mainStyles.autoGame}
-      >
-        <InputLabel           
-        id="demo-simple-select-outlined-label">Game Name</InputLabel>
+      <FormControl variant="outlined" className={mainStyles.autoGame}>
+        <InputLabel id="demo-simple-select-outlined-label">
+          Game Name
+        </InputLabel>
         <Select
           // menuProps={{onScroll: loadMore}}
           labelId="demo-simple-select-outlined-label"
@@ -79,7 +72,6 @@ export default function SimpleSelect(props) {
           onChange={handleGameSelect}
           label="Game"
           // style={{maxHeight: "10px"}}
-        
         >
           {/* {menuItems} */}
           <MenuItem value={"League of Legends"}>League of Legends</MenuItem>
@@ -87,7 +79,6 @@ export default function SimpleSelect(props) {
           <MenuItem value={"Fortnite"}>Fortnite</MenuItem>
         </Select>
       </FormControl>
-    
     </div>
   );
 }

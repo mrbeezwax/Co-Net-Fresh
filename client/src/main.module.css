@@ -1,620 +1,582 @@
-body{
-    padding:0px;
-    margin:0px;
-    }
-
-
-
-.profilePhoto{
-    background-image: url("background.jpeg");
-    height: 250px;
-
+body {
+  padding: 0px;
+  margin: 0px;
 }
 
-.profileBackground{
-    height: 250px;
-    background-image: url("newBackground.jpg");
+.profilePhoto {
+  background-image: url("background.jpeg");
+  height: 250px;
 }
 
-.large{
-    width: 15% !important;
-    height: unset !important;
-    margin-top: -6%;
-    display: block;
+.profileBackground {
+  height: 250px;
+  background-image: url("newBackground.jpg");
+}
+
+.large {
+  width: 15% !important;
+  height: unset !important;
+  margin-top: -6%;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.editProfileButton{
-    position: absolute !important;
-    top: 59%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-  
-  
-
-.bgColor{
-    background-color: #F5F5F5;
+.editProfileButton {
+  position: absolute !important;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-.profileText{
-    color: #353535;
+.bgColor {
+  background-color: #f5f5f5;
 }
 
-.profileBio{
-    width: 70%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    color: #8A8A8A;
+.profileText {
+  color: #353535;
 }
 
-.editProfile{
-    position: absolute !important;
-    margin-left: 80% !important;
-    margin-top: -4% !important;
-    text-transform: none !important;
-
+.profileBio {
+  width: 70%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: #8a8a8a;
 }
 
-.photo{
-    height: 88px;
+.editProfile {
+  position: absolute !important;
+  margin-left: 80% !important;
+  margin-top: -4% !important;
+  text-transform: none !important;
 }
 
-.forumCard{
-    padding: 7px !important;
-    
+.photo {
+  height: 88px;
 }
 
-.gameName:hover{
-    text-Decoration: underline;
-    cursor: pointer;
+.forumCard {
+  padding: 7px !important;
 }
 
-.gameName{
-
+.gameName:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.gameAndTitle{
-    margin-top: 10px;
-    margin-bottom: 20px;
-
+.gameName {
 }
 
-.timeStamp{
-    color: #A4A4A4;
-    font-size: 12px !important;
-
+.gameAndTitle {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.userName{
-    color: #535353;
-    font-size: 12px !important;
+.timeStamp {
+  color: #a4a4a4;
+  font-size: 12px !important;
 }
 
-.userNameForum{
-    color: #535353;
-    font-size: 12px !important;
+.userName {
+  color: #535353;
+  font-size: 12px !important;
 }
 
-.userNameComment{
-    color: #0755ca;
-    font-size: 14px !important;
-    margin-right: 5px !important;
+.userNameForum {
+  color: #535353;
+  font-size: 12px !important;
 }
 
-
-.forumTitle{
-    color: #A4A4A4;
+.userNameComment {
+  color: #0755ca;
+  font-size: 14px !important;
+  margin-right: 5px !important;
 }
 
-.forumTitle:hover{
-    text-Decoration: underline;
-    cursor: pointer;
+.forumTitle {
+  color: #a4a4a4;
 }
 
-.divider{
-    height: 58px !important;
-    margin: 17px !important;
+.forumTitle:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.marginBottom{
-    margin-bottom: 10%;
+.divider {
+  height: 58px !important;
+  margin: 17px !important;
 }
 
-.postSpacing{
-    margin-bottom: 10px;
-
+.marginBottom {
+  margin-bottom: 10%;
 }
 
-.bioDiv{
-    text-align: center;
+.postSpacing {
+  margin-bottom: 10px;
 }
 
-.bioEdit{
-    width: 70%;
+.bioDiv {
+  text-align: center;
 }
 
-.mediumSize{
-    width: 60px !important;
-    height: 60px !important;
+.bioEdit {
+  width: 70%;
 }
 
-.smallSize{
-    width: 40px !important;
-    height: 40px !important;
+.mediumSize {
+  width: 60px !important;
+  height: 60px !important;
 }
 
-
-.forumPostTitle{
- 
-
+.smallSize {
+  width: 40px !important;
+  height: 40px !important;
 }
 
-.forumBody{
-    color: #535353;
-    font-size: 14px !important;
-    white-space: pre-line;
+.forumPostTitle {
 }
 
-.commentBody{
-    color: #535353;
-    font-size: 14px !important;
-    white-space: pre-line;
-    margin-top: 12px !important;
-    overflow-wrap: break-word !important;
+.forumBody {
+  color: #535353;
+  font-size: 14px !important;
+  white-space: pre-line;
 }
 
-
-.commentNumber{
-    margin-top: 40px !important;
+.commentBody {
+  color: #535353;
+  font-size: 14px !important;
+  white-space: pre-line;
+  margin-top: 12px !important;
+  overflow-wrap: break-word !important;
 }
 
-.commentCard{
-    padding: 0px !important;
-    margin-bottom: 10px !important;
+.commentNumber {
+  margin-top: 40px !important;
 }
 
-.commentBox{
-    width: 100% !important;
+.commentCard {
+  padding: 0px !important;
+  margin-bottom: 10px !important;
 }
 
-.postComment{
-    float: right;
-    margin-top: 10px !important;
-
+.commentBox {
+  width: 100% !important;
 }
 
-.relatedLinks{
-    color: #0755ca;
-    font-size: 14px !important;
-    white-space: pre-line;
-    margin-top: 5px !important;
+.postComment {
+  float: right;
+  margin-top: 10px !important;
 }
 
-.bullet{
-    display: inline-block;
-    margin: 0 2px;
-    transform: scale(0.8);
+.relatedLinks {
+  color: #0755ca;
+  font-size: 14px !important;
+  white-space: pre-line;
+  margin-top: 5px !important;
 }
 
-.relatedPosts{
-    margin-bottom: 10px;
+.bullet {
+  display: inline-block;
+  margin: 0 2px;
+  transform: scale(0.8);
 }
 
-.marginTop{
-    margin-top: 5px;
+.relatedPosts {
+  margin-bottom: 10px;
 }
 
-.postStats{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+.marginTop {
+  margin-top: 5px;
 }
 
-.statsText{
-    color: #535353;
-    font-size: 14px !important;
+.postStats {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.statsNumber{
-    color: #A4A4A4;
-    font-size: 14px !important;
-
+.statsText {
+  color: #535353;
+  font-size: 14px !important;
 }
 
-.upDownVote{
-    display: block !important;
-    font-size: 40px !important;
+.statsNumber {
+  color: #a4a4a4;
+  font-size: 14px !important;
+}
+
+.upDownVote {
+  display: block !important;
+  font-size: 40px !important;
 }
 
 .upVoteOn {
-    display: block !important;
-    font-size: 40px !important;
-    color: green;
+  display: block !important;
+  font-size: 40px !important;
+  color: green;
 }
 
 .downVoteOn {
-    display: block !important;
-    font-size: 40px !important;
-    color: #ce0606;
+  display: block !important;
+  font-size: 40px !important;
+  color: #ce0606;
 }
 
-.avatarForum{
-    width: 60px !important;
-    height: 60px !important;
-    margin: auto;
-
+.avatarForum {
+  width: 60px !important;
+  height: 60px !important;
+  margin: auto;
 }
 
-.arrows{
-    margin: auto;
-    max-width: fit-content;
+.arrows {
+  margin: auto;
+  max-width: fit-content;
 }
 
-.voteNumber{
-    text-align: center;
-    font-size: 23px !important;
-    color:#2b76d4;
+.voteNumber {
+  text-align: center;
+  font-size: 23px !important;
+  color: #2b76d4;
 }
 
-.mainPostSpacing{
-    margin-bottom: 10px;
-    padding-left: 5px !important;
-
+.mainPostSpacing {
+  margin-bottom: 10px;
+  padding-left: 5px !important;
 }
 
-.bgdImage{
-    background-image: url("background.jpeg");
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-      
-    /* Preserve aspet ratio */
-    min-width: 100%;
-    min-height: 100%;
+.bgdImage {
+  background-image: url("background.jpeg");
+  position: fixed;
+  top: 0;
+  left: 0;
 
-
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
 
-.titleInput{
-    width: 70%;
-    margin-top: 30px !important;
-    margin-left: 10px !important;
+.titleInput {
+  width: 70%;
+  margin-top: 30px !important;
+  margin-left: 10px !important;
 }
 
-.autoGame{
-    width:70% !important; 
-    margin-top: 20px !important;
-    margin-left: 10px !important;
+.autoGame {
+  width: 70% !important;
+  margin-top: 20px !important;
+  margin-left: 10px !important;
 }
 
-.bodyInput{
-    width: 90%;
-    margin-top: 30px !important;
-    margin-left: 10px !important;
+.bodyInput {
+  width: 90%;
+  margin-top: 30px !important;
+  margin-left: 10px !important;
 }
-.postButton{
-    text-Transform: none !important;
-    margin-Top: 20px !important;
-    padding: 10px !important;
-    margin-Bottom: 10px !important;
-    width: 170px !important;
+.postButton {
+  text-transform: none !important;
+  margin-top: 20px !important;
+  padding: 10px !important;
+  margin-bottom: 10px !important;
+  width: 170px !important;
 }
-.cancelButton{
-    text-Transform: none !important;
-    margin-Top: 20px !important;
-    padding: 10px !important;
-    margin-Bottom: 10px !important;
-    width: 170px !important;
-    margin-right: 10px !important;
-
-}
-
-.buttonMargins{
-    display: inline-flex;
-    float: right;
-    margin-right: 9% !important;
+.cancelButton {
+  text-transform: none !important;
+  margin-top: 20px !important;
+  padding: 10px !important;
+  margin-bottom: 10px !important;
+  width: 170px !important;
+  margin-right: 10px !important;
 }
 
-.editPostButton{
-    float: right;
+.buttonMargins {
+  display: inline-flex;
+  float: right;
+  margin-right: 9% !important;
 }
 
-.statusBar{
-    width: 12% !important;
-    margin-top: 20px !important;
-    margin-left: 10px !important;
-    text-align: center;
+.editPostButton {
+  float: right;
 }
 
-.statusDot{
-    vertical-align: bottom;
-    margin-right: 5px;
-    width: 17px !important;
+.statusBar {
+  width: 12% !important;
+  margin-top: 20px !important;
+  margin-left: 10px !important;
+  text-align: center;
 }
 
-.center{
-    text-align: center !important;
-
+.statusDot {
+  vertical-align: bottom;
+  margin-right: 5px;
+  width: 17px !important;
 }
 
-.centerBio{
-    display: inline;
-    vertical-align: bottom;
-    text-align: center !important;
+.center {
+  text-align: center !important;
 }
 
-.thumbsUp{
-    vertical-align: bottom;
-    margin-left: 2%;
-    color: green;
-    display: inline;
+.centerBio {
+  display: inline;
+  vertical-align: bottom;
+  text-align: center !important;
 }
 
-.thumbsDown{
-    vertical-align: bottom;
-    margin-left: 2%;
-    color: #ce0606;
-    display: inline;
+.thumbsUp {
+  vertical-align: bottom;
+  margin-left: 2%;
+  color: green;
+  display: inline;
 }
 
-.tUp{
-    color: green !important;
-    background-color: #c4e4a7cc !important;
-    margin-right: 5px !important;
-}   
-
-.tDown{
-    color: #ce0606 !important;
-    background-color: #f1b8afcc !important;
+.thumbsDown {
+  vertical-align: bottom;
+  margin-left: 2%;
+  color: #ce0606;
+  display: inline;
 }
 
-.settingsDiv{
-    margin-left: 2%;
+.tUp {
+  color: green !important;
+  background-color: #c4e4a7cc !important;
+  margin-right: 5px !important;
 }
 
-.user{
-    text-align: center;
-    color: gray;
+.tDown {
+  color: #ce0606 !important;
+  background-color: #f1b8afcc !important;
 }
 
-.timeZone{
-    position: absolute;
-    color: gray;
-    margin: 2% !important;
+.settingsDiv {
+  margin-left: 2%;
 }
 
-.tagTitle{
-    margin-right: 10px !important;
-    margin-top: 6px !important;
-
+.user {
+  text-align: center;
+  color: gray;
 }
 
-
-.friendUsername{
-    color: #0755ca;
-    font-size: 14px !important;
-    margin-right: 5px !important;
+.timeZone {
+  position: absolute;
+  color: gray;
+  margin: 2% !important;
 }
 
-
-.friendUsername:hover{
-    text-Decoration: underline;
-    cursor: pointer;
+.tagTitle {
+  margin-right: 10px !important;
+  margin-top: 6px !important;
 }
 
-.tabPanel{
-    width: 80%;
-    
+.friendUsername {
+  color: #0755ca;
+  font-size: 14px !important;
+  margin-right: 5px !important;
 }
 
-.gametitle{
-    color: "black";
-    margin-top: 20px;
-    margin-left: 8px;
+.friendUsername:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.gametitle:hover{
-    text-Decoration: underline;
-    cursor: pointer;
+.tabPanel {
+  width: 80%;
 }
 
-.gametitleBig{
-    color: #4c4c4c;
-    margin-top: 20px !important;
-    margin-bottom: 20px!important ;
-    margin-left: 8px !important ;
+.gametitle {
+  color: "black";
+  margin-top: 20px;
+  margin-left: 8px;
 }
 
-.gameTags{
-    margin-top: 15px !important;
+.gametitle:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.gamePhoto{
-    width: 100%;
+.gametitleBig {
+  color: #4c4c4c;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important ;
+  margin-left: 8px !important ;
 }
 
-.userNameGame{
-    color: #0755ca;
-    font-size: 14px !important;
-    margin-right: 5px !important;
+.gameTags {
+  margin-top: 15px !important;
 }
 
-.userNameGame:hover{
-    text-Decoration: underline;
-    cursor: pointer;
+.gamePhoto {
+  width: 100%;
 }
 
-.gamePlayer{
-    color: gray;
-    font-size: 14px !important;
-    white-space: pre-line;
-    margin-top: 12px !important;
+.userNameGame {
+  color: #0755ca;
+  font-size: 14px !important;
+  margin-right: 5px !important;
 }
 
-.plus{
-    color: white !important;
-    background-color: rgb(175, 49, 49) !important;
-    margin-left: 20px !important;
-    vertical-align: bottom;
-}  
-
-.dialogBox{
-    height: 400px !important;
+.userNameGame:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.centerText{
-    margin-bottom: 6% !important;
-    text-align: center !important;
-    margin-top: 6% !important;
+.gamePlayer {
+  color: gray;
+  font-size: 14px !important;
+  white-space: pre-line;
+  margin-top: 12px !important;
 }
 
-.statusGuest{
-    vertical-align: middle;
-    margin-right: 5px;
-    width: 17px !important;
+.plus {
+  color: white !important;
+  background-color: rgb(175, 49, 49) !important;
+  margin-left: 20px !important;
+  vertical-align: bottom;
 }
 
-.statusText{
-    vertical-align: initial;
-    margin-top: 23px !important;
+.dialogBox {
+  height: 400px !important;
 }
 
-.tagsText{
-    margin-top: 6px !important;
-    margin-right: 10px !important;
-    display: inline !important;
-    color: gray;
+.centerText {
+  margin-bottom: 6% !important;
+  text-align: center !important;
+  margin-top: 6% !important;
 }
 
-.editCommentButton{
-    float: right;
-    min-width: 36px !important;
-    padding: 5px !important;
+.statusGuest {
+  vertical-align: middle;
+  margin-right: 5px;
+  width: 17px !important;
 }
 
-.breakWord{
-    overflow-wrap: break-word !important;
+.statusText {
+  vertical-align: initial;
+  margin-top: 23px !important;
 }
 
-.editCommentField{
-    color: #535353;
-    font-size: 14px !important;
-    white-space: pre-line;
-    margin-top: 12px !important;
-    overflow-wrap: break-word !important;
-    display: inherit !important;
+.tagsText {
+  margin-top: 6px !important;
+  margin-right: 10px !important;
+  display: inline !important;
+  color: gray;
 }
 
-.tags{
-    text-align: center;
+.editCommentButton {
+  float: right;
+  min-width: 36px !important;
+  padding: 5px !important;
 }
 
-.partyGame{
-    display: inline;
-    font-size: inherit !important;
-    color: #0808af;
-    margin-left: 5px !important;
+.breakWord {
+  overflow-wrap: break-word !important;
 }
 
-.partyGame:hover{
-    text-Decoration: underline;
-    cursor: pointer;
+.editCommentField {
+  color: #535353;
+  font-size: 14px !important;
+  white-space: pre-line;
+  margin-top: 12px !important;
+  overflow-wrap: break-word !important;
+  display: inherit !important;
 }
 
-.dialogBoxParty{
-    height: 500px !important;
-    overflow: hidden !important;
+.tags {
+  text-align: center;
 }
 
-.superSmallAvatar{
-    width: 20px !important;
-    height: 20px !important;
-    margin-top: 2px !important;
+.partyGame {
+  display: inline;
+  font-size: inherit !important;
+  color: #0808af;
+  margin-left: 5px !important;
 }
 
-.userCard{
-    padding: 5px !important;
+.partyGame:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.addTags{
-    float: left;
-    margin-top: 8px;
-    color: rgb(63, 80, 182);
+.dialogBoxParty {
+  height: 500px !important;
+  overflow: hidden !important;
 }
 
-.addTags:hover{
-    cursor: pointer;
+.superSmallAvatar {
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 2px !important;
 }
 
-.profileCard{
-    margin-left: 2% !important;
-    margin-top: 2% !important;
-    position: absolute;
+.userCard {
+  padding: 5px !important;
 }
 
-.profileCardPadding{
-    padding: 10px;
+.addTags {
+  float: left;
+  margin-top: 8px;
+  color: rgb(63, 80, 182);
 }
 
-.width300{
-    width: 200px !important;
+.addTags:hover {
+  cursor: pointer;
 }
 
-
-.commentThread{
-    font-size: 14px !important;
-    white-space: pre-line;
-    overflow-wrap: break-word !important;
-    color: rgb(63, 80, 182);
-    display:inline;
-    margin-left: 4px !important;
-
-    
+.profileCard {
+  margin-left: 2% !important;
+  margin-top: 2% !important;
+  position: absolute;
 }
 
-.commentThread:hover{
-    cursor: pointer;
-    text-decoration: underline;
-    
+.profileCardPadding {
+  padding: 10px;
 }
 
-.commentThreadText{
-    margin-top: 9px !important;
+.width300 {
+  width: 200px !important;
 }
 
-.multiselectGame{
-    width: 70% !important;
-    margin-left: 10px !important;
-
+.commentThread {
+  font-size: 14px !important;
+  white-space: pre-line;
+  overflow-wrap: break-word !important;
+  color: rgb(63, 80, 182);
+  display: inline;
+  margin-left: 4px !important;
 }
 
-.messageButton{
-    margin-bottom: 15px !important;
+.commentThread:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.composeMessage{
-    float:right !important;
-    margin-top: 24px !important;
-    margin-right: 20% !important;
-
+.commentThreadText {
+  margin-top: 9px !important;
 }
 
-.searchWidth{
-    width: 400px !important;
+.multiselectGame {
+  width: 70% !important;
+  margin-left: 10px !important;
 }
 
-.lowerCase{
-    text-transform: none !important;
-    margin-top: 28px !important;
+.messageButton {
+  margin-bottom: 15px !important;
 }
 
-.dialogBoxLarge{
-    height: 480px !important;
+.composeMessage {
+  float: right !important;
+  margin-top: 24px !important;
+  margin-right: 20% !important;
 }
 
+.searchWidth {
+  width: 400px !important;
+}
 
+.lowerCase {
+  text-transform: none !important;
+  margin-top: 28px !important;
+}
 
-
+.dialogBoxLarge {
+  height: 480px !important;
+}

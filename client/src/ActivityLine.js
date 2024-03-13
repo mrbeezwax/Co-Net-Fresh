@@ -1,19 +1,10 @@
-import React, { Component } from "react";
-import TopMenu from "./TopMenu";
-import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
-import styles from "./main.module.css";
-import profilePic from "./commentPhoto.jpg";
-import Typography from "@material-ui/core/Typography";
-import Menu from "./ProfileMenu.js";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import CardContent from "@material-ui/core/CardContent";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import Link from "@material-ui/core/Link";
-import mainStyles from "./main.module.css";
+import Typography from "@material-ui/core/Typography";
+import { createMuiTheme } from "@material-ui/core/styles";
+import axios from "axios";
+import React, { Component } from "react";
+import { default as mainStyles, default as styles } from "./main.module.css";
 
 const monthNames = [
   "January",
@@ -136,7 +127,7 @@ class friend extends Component {
         <Grid item xs={11}>
           <Grid container spacing={8}>
             <Grid item xs={2}>
-            <img className={mainStyles.gamePhoto} src={this.state.imageURL} />
+              <img className={mainStyles.gamePhoto} src={this.state.imageURL} />
             </Grid>
             <Grid item xs={10}>
               <Typography className={styles.friendUsername} display="inline">

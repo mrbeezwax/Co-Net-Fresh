@@ -12,7 +12,7 @@ class PicUpload extends Component {
     this.state = {
       file: null,
       username: "conetwoboi",
-      photo: ""
+      photo: "",
     };
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +20,7 @@ class PicUpload extends Component {
 
   handleFileChange(event) {
     this.setState({
-      file: event.target.files[0]
+      file: event.target.files[0],
     });
   }
 
@@ -30,24 +30,26 @@ class PicUpload extends Component {
     formData.append("file", this.state.file);
     formData.append("username", this.state.username);
 
-    axios.put(`http://localhost:3001/users/photo/${this.state.username}`, formData).then(json => {
-      console.log(json);
-      if (json.data.success) {
-        //Creates post
-        console.log("PHOTO UPDATE SUCCESS");
-      } else {
-        // Handle failed post creation?
-        console.log("PHOTO UPDATE FAIL");
-      }
-    });
+    axios
+      .put(`http://localhost:3001/users/photo/${this.state.username}`, formData)
+      .then((json) => {
+        console.log(json);
+        if (json.data.success) {
+          //Creates post
+          console.log("PHOTO UPDATE SUCCESS");
+        } else {
+          // Handle failed post creation?
+          console.log("PHOTO UPDATE FAIL");
+        }
+      });
   }
 
   componentDidMount() {
     axios
       .get(`http://localhost:3001/users/${this.state.username}`)
-      .then(res => {
+      .then((res) => {
         this.setState({
-          photo: res.data.profilePhoto
+          photo: res.data.profilePhoto,
         });
       });
   }
@@ -55,16 +57,16 @@ class PicUpload extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
-        <div class="field">
-          <label> Image </label>
-          <input name="photo" type="file" onChange={this.handleFileChange} />
-        </div>
-        <button class="ui primary button" type="submit">
-          Post
-        </button>
-      </form>
-      <img src={this.state.photo}></img>
+        <form onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label> Image </label>
+            <input name="photo" type="file" onChange={this.handleFileChange} />
+          </div>
+          <button className="ui primary button" type="submit">
+            Post
+          </button>
+        </form>
+        <img src={this.state.photo}></img>
       </div>
     );
   }

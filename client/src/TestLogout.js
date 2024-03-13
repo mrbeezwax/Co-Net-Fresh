@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Multiselect } from "multiselect-react-dropdown";
-import * as fuzz from 'fuzzball';
+import * as fuzz from "fuzzball";
 
 class TestLogout extends Component {
   constructor(props) {
@@ -9,18 +9,15 @@ class TestLogout extends Component {
     this.state = {
       plainArray: ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"],
       objectArray: [
-        { key: "Option 1"},
-        { key: "Option 2"},
-        { key: "Option 3"},
-        { key: "Option 4"},
-        { key: "Option 5"},
-        { key: "Option 6"},
-        { key: "Option 7"},
-      ],
-      selectedValues: [
         { key: "Option 1" },
         { key: "Option 2" },
+        { key: "Option 3" },
+        { key: "Option 4" },
+        { key: "Option 5" },
+        { key: "Option 6" },
+        { key: "Option 7" },
       ],
+      selectedValues: [{ key: "Option 1" }, { key: "Option 2" }],
     };
   }
 

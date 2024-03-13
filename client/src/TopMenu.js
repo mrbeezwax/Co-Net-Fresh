@@ -1,24 +1,18 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import logo from "./logo.png";
 import MailIcon from "@material-ui/icons/Mail";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import axios from "axios";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import createHistory from "history/createBrowserHistory";
-import { createHashHistory } from "history";
-import { browserHistory } from "react-router";
 import PartyButton from "./Party";
 import PartyActive from "./PartyActive";
 import socketIOClient from "socket.io-client";
@@ -28,16 +22,13 @@ import "./tags.css";
 import { InstantSearch, Index } from "react-instantsearch-dom";
 import styles from "./main.module.css";
 
-
 const TagSelectedComponent = ({ hit }) => (
   <Fragment>
     <code>{hit.username}</code>
   </Fragment>
 );
 
-const TagSuggestionComponent = ({ hit }) => (
-  <Fragment>{hit.username}</Fragment>
-);
+const TagSuggestionComponent = ({ hit }) => <Fragment>{hit.username}</Fragment>;
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -209,7 +200,9 @@ export default function PrimarySearchAppBar(props) {
       </MenuItem>
       <MenuItem onClick={() => handleMenuClose("messages")}>Messages</MenuItem>
 
-      <MenuItem id="logout" onClick={() => handleMenuClose("logout")}>Logout</MenuItem>
+      <MenuItem id="logout" onClick={() => handleMenuClose("logout")}>
+        Logout
+      </MenuItem>
     </Menu>
   );
 
@@ -262,7 +255,12 @@ export default function PrimarySearchAppBar(props) {
   );
 
   return isGuest ? (
-    <div id="TopMenu" class="hi" style={{ margin: 0 }} className={classes.grow}>
+    <div
+      id="TopMenu"
+      className="hi"
+      style={{ margin: 0 }}
+      className={classes.grow}
+    >
       <AppBar
         style={{ margin: 0, padding: 10 }}
         color="transparent"
@@ -298,7 +296,11 @@ export default function PrimarySearchAppBar(props) {
             {/* <div className={classes.searchIcon}>
               <SearchIcon />
             </div> */}
-            <InstantSearch className = {styles.searchWidth} searchClient={client} indexName="co-net_users">
+            <InstantSearch
+              className={styles.searchWidth}
+              searchClient={client}
+              indexName="co-net_users"
+            >
               <Index indexName="co-net_users">
                 <Tags
                   search={true}
@@ -308,7 +310,7 @@ export default function PrimarySearchAppBar(props) {
                   onUpdate={onTagsUpdated}
                   limitedTo={1}
                   translations={{
-                    placeholder: "Search"
+                    placeholder: "Search",
                   }}
                 />
               </Index>
@@ -364,7 +366,12 @@ export default function PrimarySearchAppBar(props) {
       </AppBar>
     </div>
   ) : (
-    <div id="TopMenu" class="hi" style={{ margin: 0 }} className={classes.grow}>
+    <div
+      id="TopMenu"
+      className="hi"
+      style={{ margin: 0 }}
+      className={classes.grow}
+    >
       <AppBar
         style={{ margin: 0, padding: 10 }}
         color="transparent"
@@ -410,7 +417,7 @@ export default function PrimarySearchAppBar(props) {
                   onUpdate={onTagsUpdated}
                   limitedTo={1}
                   translations={{
-                    placeholder: "Search"
+                    placeholder: "Search",
                   }}
                 />
               </Index>

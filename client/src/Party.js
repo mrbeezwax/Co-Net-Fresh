@@ -3,13 +3,8 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import styles from "./main.module.css";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import TextField from "@material-ui/core/TextField";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import axios from "axios";
@@ -73,7 +68,7 @@ export default function AlertDialog(props) {
     if (partyCreated) {
       setRedirect(true);
     }
-  }, [partyCreated])
+  }, [partyCreated]);
 
   const style = {
     multiselectContainer: {
@@ -191,7 +186,12 @@ export default function AlertDialog(props) {
           <Button onClick={handleCancel} color="primary">
             Cancel
           </Button>
-          <Button id="createPartyDone" onClick={handleDone} color="primary" autoFocus>
+          <Button
+            id="createPartyDone"
+            onClick={handleDone}
+            color="primary"
+            autoFocus
+          >
             Done
           </Button>
         </DialogActions>

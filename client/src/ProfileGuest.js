@@ -8,13 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Menu from "./ProfileMenuGuest.js";
 import Button from "@material-ui/core/Button";
 import EditProfile from "./editProfile";
-import Status from './status.js';
-import Thumbs from './thumbs';
-import { Multiselect } from 'multiselect-react-dropdown';
-import Grid from '@material-ui/core/Grid';
-import Brightness1Icon from '@material-ui/icons/Brightness1';
-
-
+import Thumbs from "./thumbs";
+import Brightness1Icon from "@material-ui/icons/Brightness1";
 
 class Profile extends Component {
   constructor(props) {
@@ -32,14 +27,14 @@ class Profile extends Component {
       lastName: "",
       photo: "",
       text: "Follow",
-      options:[
-        { key: "Option 1", },
-        { key: "Option 2", },
-        { key: "Option 3", },
-        { key: "Option 4", },
-        { key: "Option 5", },
-        { key: "Option 6", },
-        { key: "Option 7", }
+      options: [
+        { key: "Option 1" },
+        { key: "Option 2" },
+        { key: "Option 3" },
+        { key: "Option 4" },
+        { key: "Option 5" },
+        { key: "Option 6" },
+        { key: "Option 7" },
       ],
     };
 
@@ -71,9 +66,8 @@ class Profile extends Component {
   }
 
   changeText = (text) => {
-
-    this.setState({ text }); 
-  } 
+    this.setState({ text });
+  };
 
   handleBioSave() {
     // make update call to user bio
@@ -168,24 +162,19 @@ class Profile extends Component {
       marginLeft: 8,
     };
     this.style = {
-      multiselectContainer: { 
-        textAlign: 'center',
+      multiselectContainer: {
+        textAlign: "center",
       },
-      chips: {
-      },
+      chips: {},
       searchBox: {
         border: "none",
-        fontSize: '15px',
-        fontFamily: 'Segoe UI',
-
+        fontSize: "15px",
+        fontFamily: "Segoe UI",
       },
-      inputField: { 
-        fontSize: '15px',
-
-
-    },
-      multiselectContainer: {
-      }
+      inputField: {
+        fontSize: "15px",
+      },
+      multiselectContainer: {},
     };
 
     if (!this.state.editing) {
@@ -194,18 +183,23 @@ class Profile extends Component {
           <TopMenu history={this.props.history}></TopMenu>
           <div className={styles.bgColor}>
             <div className={styles.profilePhoto}> </div>
-            <Typography className = {styles.timeZone}>GMT-7 Monday, April 13, 2020, 2:27 PM</Typography>
+            <Typography className={styles.timeZone}>
+              GMT-7 Monday, April 13, 2020, 2:27 PM
+            </Typography>
             <Avatar src={this.state.photo} className={styles.large} />
             <Button
-            onClick={() => this.setState({ editing: true })}
-            variant="contained"
-            color="primary"
-            size="large"
-            className={styles.editProfile}
-            onClick={ () => { this.changeText("Unfollow")}  }> {this.state.text}
-          </Button>
-
-           
+              onClick={() => this.setState({ editing: true })}
+              variant="contained"
+              color="primary"
+              size="large"
+              className={styles.editProfile}
+              onClick={() => {
+                this.changeText("Unfollow");
+              }}
+            >
+              {" "}
+              {this.state.text}
+            </Button>
           </div>
           <div className={styles.bgColor}>
             <Typography
@@ -217,9 +211,15 @@ class Profile extends Component {
               {this.state.firstName} {this.state.lastName}
             </Typography>
 
-            <Typography className = {styles.user}>@Destroyer392</Typography>
+            <Typography className={styles.user}>@Destroyer392</Typography>
             <div style={{ margin: 15 }} className={styles.center}>
-            <Typography className = {styles.statusText}><Brightness1Icon className = {styles.statusGuest} style={{color: "#26AD00"}}></Brightness1Icon>Active</Typography>
+              <Typography className={styles.statusText}>
+                <Brightness1Icon
+                  className={styles.statusGuest}
+                  style={{ color: "#26AD00" }}
+                ></Brightness1Icon>
+                Active
+              </Typography>
               <Thumbs></Thumbs>
             </div>
             <Typography
@@ -230,14 +230,12 @@ class Profile extends Component {
             >
               {this.state.bio}
             </Typography>
-            <div className = {styles.center}>
-            <Typography className = {styles.tagTitle}>Tags:</Typography>
+            <div className={styles.center}>
+              <Typography className={styles.tagTitle}>Tags:</Typography>
 
-            <Typography className = {styles.tagsText}>fun, fresh, love, entertaining, cute</Typography>
-
-
-      
-           
+              <Typography className={styles.tagsText}>
+                fun, fresh, love, entertaining, cute
+              </Typography>
             </div>
             <Menu style={{ marginTop: 200 }} className={styles.menu}></Menu>
           </div>

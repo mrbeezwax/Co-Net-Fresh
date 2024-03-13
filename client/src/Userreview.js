@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import TopMenu from "./TopMenu";
 import axios from "axios";
 import { createMuiTheme } from "@material-ui/core/styles";
 import styles from "./main.module.css";
-import profilePic from "./commentPhoto.jpg";
 import Typography from "@material-ui/core/Typography";
-import Menu from "./ProfileMenu.js";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import { Link } from "@material-ui/core";
@@ -129,7 +123,9 @@ class forumComment extends Component {
                 href="google.com"
                 display="inline"
               >
-                <Link href={`/profile/${this.props.author}`}>{this.props.author}</Link>
+                <Link href={`/profile/${this.props.author}`}>
+                  {this.props.author}
+                </Link>
               </Typography>
               <Typography className={styles.timeStamp} display="inline">
                 {timestamp}

@@ -14,38 +14,34 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import axios from "axios";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import createHistory from "history/createBrowserHistory";
-import { createHashHistory } from "history";
-import { browserHistory } from "react-router";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.black, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.black, 0.25)
+      backgroundColor: fade(theme.palette.common.black, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -54,31 +50,31 @@ const useStyles = makeStyles(theme => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   inputRoot: {
-    color: "secondary"
+    color: "secondary",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200
-    }
+      width: 200,
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 }));
 
 export default function PrimarySearchAppBar(props) {
@@ -93,7 +89,7 @@ export default function PrimarySearchAppBar(props) {
   const getUser = () => {
     axios
       .get("http://localhost:3001/user/currentuser", { withCredentials: true })
-      .then(json => {
+      .then((json) => {
         if (json.data.username) {
           setUsername(json.data.username);
         }
@@ -102,7 +98,7 @@ export default function PrimarySearchAppBar(props) {
 
   const { history } = props;
 
-  const handleProfileMenuOpen = event => {
+  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -110,17 +106,16 @@ export default function PrimarySearchAppBar(props) {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = event => {
+  const handleMenuClose = (event) => {
     setAnchorEl(null);
     handleMobileMenuClose();
     if (event === "profile") history.push("profile");
     if (event === "myaccount") history.push("myaccount");
     if (event === "messages") history.push("messages");
-
     else if (event === "logout") history.push("");
   };
 
-  const handleMobileMenuOpen = event => {
+  const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
@@ -140,11 +135,12 @@ export default function PrimarySearchAppBar(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={() => handleMenuClose("profile")}>Profile</MenuItem>
-      <MenuItem onClick={() => handleMenuClose("myaccount")}>My account</MenuItem>
+      <MenuItem onClick={() => handleMenuClose("myaccount")}>
+        My account
+      </MenuItem>
       <MenuItem onClick={() => handleMenuClose("messages")}>Messages</MenuItem>
 
       <MenuItem onClick={() => handleMenuClose("logout")}>Logout</MenuItem>
-
     </Menu>
   );
 
@@ -191,18 +187,19 @@ export default function PrimarySearchAppBar(props) {
   );
 
   return (
-    <div class="hi" style={{ margin: 0 }} className={classes.grow}>
+    <div className="hi" style={{ margin: 0 }} className={classes.grow}>
       <AppBar
         style={{ margin: 0, padding: 10 }}
         color="transparent"
         position="static"
       >
         <Toolbar>
-         
-          <a href='http://localhost:3000/Feed'><img src = {logo} alt = "Logo" style = {{width: '70px'}}/></a>  
-          
+          <a href="http://localhost:3000/Feed">
+            <img src={logo} alt="Logo" style={{ width: "70px" }} />
+          </a>
+
           <IconButton color="inherit">
-            <Typography 
+            <Typography
               className="menuButtons"
               onClick={() => history.push("/feed")}
             >
@@ -228,52 +225,51 @@ export default function PrimarySearchAppBar(props) {
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
-                input: classes.inputInput
+                input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
             />
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <IconButton color="inherit">
-          <Typography
-            className="menuButtons"
-            onClick={() => history.push("/signin")}
-          >
-            Sign In
-          </Typography>
-        </IconButton>
-        <IconButton color="inherit">
-          <Typography
-            className="menuButtons"
-            onClick={() => history.push("/signup")}
-            style = {{color: '#af0303'}}
-          >
-            Sign Up
-          </Typography>
-        </IconButton>
+            <IconButton color="inherit">
+              <Typography
+                className="menuButtons"
+                onClick={() => history.push("/signin")}
+              >
+                Sign In
+              </Typography>
+            </IconButton>
+            <IconButton color="inherit">
+              <Typography
+                className="menuButtons"
+                onClick={() => history.push("/signup")}
+                style={{ color: "#af0303" }}
+              >
+                Sign Up
+              </Typography>
+            </IconButton>
           </div>
           <div className={classes.sectionMobile}>
-          <IconButton color="inherit">
-          <Typography
-            className="menuButtons"
-            onClick={() => history.push("/signin")}
-          >
-            Sign In
-          </Typography>
-        </IconButton>
-        <IconButton color="inherit">
-          <Typography
-            className="menuButtons"
-            onClick={() => history.push("/signup")}
-          >
-            Sign Up
-          </Typography>
-        </IconButton>
+            <IconButton color="inherit">
+              <Typography
+                className="menuButtons"
+                onClick={() => history.push("/signin")}
+              >
+                Sign In
+              </Typography>
+            </IconButton>
+            <IconButton color="inherit">
+              <Typography
+                className="menuButtons"
+                onClick={() => history.push("/signup")}
+              >
+                Sign Up
+              </Typography>
+            </IconButton>
           </div>
         </Toolbar>
       </AppBar>
-     
     </div>
   );
 }

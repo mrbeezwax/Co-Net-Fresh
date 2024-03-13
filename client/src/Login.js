@@ -71,92 +71,86 @@ export default function ServerModal(props) {
       }
     });
 
-    return (
-      <div className={styles.bgdImage} ref={rootRef}>
-        <Modal
-          disablePortal
-          disableEnforceFocus
-          disableAutoFocus
-          open
-          aria-labelledby="server-modal-title"
-          aria-describedby="server-modal-description"
-          className={classes.modal}
-          container={() => rootRef.current}
-        >
-          <div
-            className={classes.paper}
-            style={{marginTop: 167 }}
-          >
-            <p id="server-modal-description">
-              <Typography align="center" id="server-modal-title">
-                <img src={logo} alt="Logo" style={{ width: "100px" }} />
-              </Typography>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Typography
-                    component="h2"
-                    fontsize={18}
-                    align="center"
-                    id="server-modal-title"
-                  >
-                    Connecting Gamers Worldwide. <p></p>
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}></Grid>
+  return (
+    <div className={styles.bgdImage} ref={rootRef}>
+      <Modal
+        disablePortal
+        disableEnforceFocus
+        disableAutoFocus
+        open
+        aria-labelledby="server-modal-title"
+        aria-describedby="server-modal-description"
+        className={classes.modal}
+        container={() => rootRef.current}
+      >
+        <div className={classes.paper} style={{ marginTop: 167 }}>
+          <p id="server-modal-description">
+            <Typography align="center" id="server-modal-title">
+              <img src={logo} alt="Logo" style={{ width: "100px" }} />
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography
+                  component="h2"
+                  fontsize={18}
+                  align="center"
+                  id="server-modal-title"
+                >
+                  Connecting Gamers Worldwide. <p></p>
+                </Typography>
               </Grid>
-              <form className={classes.form} noValidate>
-                <Grid container spacing={4}>
-                  <Grid item xs={12}>
-                    <Button
+              <Grid item xs={12}></Grid>
+            </Grid>
+            <form className={classes.form} noValidate>
+              <Grid container spacing={4}>
+                <Grid item xs={12}>
+                  <Button
                     type="button"
                     fullWidth
                     variant="contained"
                     color="primary"
                     className={classes.submit}
                     onClick={() => history.push("/signup")}
-                    >
-                      Sign up with Email
-                    </Button>
-                  </Grid>
-                  <Grid item xs={12}>
-                  
-                  </Grid>
+                  >
+                    Sign up with Email
+                  </Button>
                 </Grid>
-                <Grid container spacing={10}>
-                  <Grid item xs={12}></Grid>
-                  <Grid item xs={12} style={{ textAlign: "right" }}>
-                    <Typography
-                      display="inline"
-                      component="h2"
-                      fontsize={18}
-                      align="center"
-                      id="server-modal-title"
-                    >
-                      Already have an account?
-                    </Typography>
-                    <Typography
-                      className={classes.links}
-                      display="inline"
-                      color="primary"
-                      component="h2"
-                      fontsize={18}
-                      align="center"
-                      onClick={() => history.push("/signin")}
-                      id="server-modal-title"
-                    >
-                      {" "}
-                      Sign in.{" "}
-                    </Typography>
-                  </Grid>
+                <Grid item xs={12}></Grid>
+              </Grid>
+              <Grid container spacing={10}>
+                <Grid item xs={12}></Grid>
+                <Grid item xs={12} style={{ textAlign: "right" }}>
+                  <Typography
+                    display="inline"
+                    component="h2"
+                    fontsize={18}
+                    align="center"
+                    id="server-modal-title"
+                  >
+                    Already have an account?
+                  </Typography>
+                  <Typography
+                    className={classes.links}
+                    display="inline"
+                    color="primary"
+                    component="h2"
+                    fontsize={18}
+                    align="center"
+                    onClick={() => history.push("/signin")}
+                    id="server-modal-title"
+                  >
+                    {" "}
+                    Sign in.{" "}
+                  </Typography>
                 </Grid>
-              </form>
-              <Box mt={5}>
-                <copyright />
-              </Box>
-            </p>
-          </div>
-        </Modal>
-      </div>
-    );
-  }
-
+              </Grid>
+            </form>
+            <Box mt={5}>
+              <copyright />
+            </Box>
+          </p>
+        </div>
+      </Modal>
+    </div>
+  );
+}

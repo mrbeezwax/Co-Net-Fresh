@@ -61,11 +61,20 @@ export default function VerticalTabs(props) {
     var threads = [];
     props.threads.forEach((thread) => {
       const threadCmp = (
-        <TabPanel className={styles.tabPanel} key={index} value={newValue} index={index++}>
+        <TabPanel
+          className={styles.tabPanel}
+          key={index}
+          value={newValue}
+          index={index++}
+        >
           <ChatThread
             sharedMessages={thread.sharedMessages}
             currentUser={props.currentUser}
-            recipient={thread.username2 != props.currentUser ? thread.username2 : thread.username1 }
+            recipient={
+              thread.username2 != props.currentUser
+                ? thread.username2
+                : thread.username1
+            }
             ownAvatar={props.avatar}
             threadID={thread._id}
           ></ChatThread>
@@ -82,7 +91,17 @@ export default function VerticalTabs(props) {
     var tabs = [];
     var index = 0;
     props.threads.forEach((thread) => {
-      tabs.push(<Tab key={index} label={props.currentUser === thread.username1 ? thread.username2 : thread.username1} {...a11yProps(index++)} />);
+      tabs.push(
+        <Tab
+          key={index}
+          label={
+            props.currentUser === thread.username1
+              ? thread.username2
+              : thread.username1
+          }
+          {...a11yProps(index++)}
+        />
+      );
     });
     var threadCmp = (
       <TabPanel className={styles.tabPanel} value={value} index={value}>
@@ -90,7 +109,11 @@ export default function VerticalTabs(props) {
           sharedMessages={props.threads[value].sharedMessages}
           currentUser={props.currentUser}
           ownAvatar={props.avatar}
-          recipient={props.threads[value].username2 != props.currentUser ? props.threads[value].username2 : props.threads[value].username1 }
+          recipient={
+            props.threads[value].username2 != props.currentUser
+              ? props.threads[value].username2
+              : props.threads[value].username1
+          }
           threadID={props.threads[value]._id}
         ></ChatThread>
       </TabPanel>

@@ -7,11 +7,6 @@ import Tab from "@material-ui/core/Tab";
 
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Games from "./Games.js";
-import ReviewTab from "./reviewTab.js";
-import FriendsList from "./friendsList.js";
-import Activity from "./Activity.js";
-import { Multiselect } from "multiselect-react-dropdown";
 import Player from "./player.js";
 import PartyCard from "./PartyCard";
 
@@ -101,9 +96,23 @@ export default function ScrollableTabsButtonForce(props) {
       <Player key={party._id} username={party.partyLeader}></Player>
     );
     party.partyMembers.forEach((member) => {
-      members.unshift(<Player key={member._id} username={member.username}></Player>);
+      members.unshift(
+        <Player key={member._id} username={member.username}></Player>
+      );
     });
-    partyCards.unshift(<PartyCard key={party._id} inOtherParty={props.inOtherParty} currentUser={props.currentUser} gameID={props.gameID} game={props.game} party={party} leader={party.partyLeader} currentPlayers={party.partyMembers.length + 1} maxPlayers={party.maxPlayers}></PartyCard>);
+    partyCards.unshift(
+      <PartyCard
+        key={party._id}
+        inOtherParty={props.inOtherParty}
+        currentUser={props.currentUser}
+        gameID={props.gameID}
+        game={props.game}
+        party={party}
+        leader={party.partyLeader}
+        currentPlayers={party.partyMembers.length + 1}
+        maxPlayers={party.maxPlayers}
+      ></PartyCard>
+    );
   });
 
   const handleChange = (event, newValue) => {

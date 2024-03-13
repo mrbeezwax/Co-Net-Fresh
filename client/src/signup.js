@@ -5,10 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "./logo.png";
-import bgd from "./background.jpeg";
 import axios from "axios";
-import styles from "./App.css";
 import TextField from "@material-ui/core/TextField";
 import mainStyles from "./main.module.css";
 
@@ -24,8 +21,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     alignItems: "center",
     justifyContent: "center",
-
-
   },
   paper: {
     width: 400,
@@ -37,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 200,
     marginRight: 400,
     marginTop: 100,
-    overflow: 'visible',
+    overflow: "visible",
   },
   error: {
     backgroundColor: "#FFCCCC",
@@ -164,12 +159,10 @@ export default function ServerModal(props) {
         className={classes.modal}
         container={() => rootRef.current}
       >
-        <div className={classes.paper} style={{marginTop: 200 }}>
+        <div className={classes.paper} style={{ marginTop: 200 }}>
           <p id="server-modal-description">
-            <Typography align="center" id="server-modal-title">
-            </Typography>
+            <Typography align="center" id="server-modal-title"></Typography>
             <Grid container spacing={2}>
-             
               <Grid item xs={12}></Grid>
             </Grid>
             <form className={classes.form} noValidate>

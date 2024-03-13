@@ -14,10 +14,8 @@ import { Multiselect } from "multiselect-react-dropdown";
 import Grid from "@material-ui/core/Grid";
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 import Error404 from "./Error404";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
 import AddTags from "./AddTags";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { Link } from "@material-ui/core";
 

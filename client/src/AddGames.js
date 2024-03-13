@@ -4,14 +4,9 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import styles from "./main.module.css";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import TextField from "@material-ui/core/TextField";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import Typography from "@material-ui/core/Typography";
 import algoliasearch from "algoliasearch/lite";
 import Tags from "./lib/Tags";
 import "./tags.css";
@@ -53,7 +48,9 @@ class AddGames extends Component {
     // Go through game arr and create obj with correct fields based on UsersGamesSchema
     // Save it to gameSaves
     gameArr.forEach((game) => {
-      var cleanTags = game.gameTags.substring(1, game.gameTags.length - 1).split(",");
+      var cleanTags = game.gameTags
+        .substring(1, game.gameTags.length - 1)
+        .split(",");
       var cleanerTags = [];
       cleanTags.forEach((tag) => {
         cleanerTags.push(tag.substring(1, tag.length - 1));

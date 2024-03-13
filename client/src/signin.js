@@ -6,7 +6,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "./logo.png";
-import bgd from "./background.jpeg";
 import axios from "axios";
 import styles from "./main.module.css";
 import TextField from "@material-ui/core/TextField";

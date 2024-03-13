@@ -1,7 +1,6 @@
-
 // /client/App.js
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 class App extends Component {
   // initialize our state
@@ -43,7 +42,7 @@ class App extends Component {
   // our first get method that uses our backend api to
   // fetch data from our data base
   getDataFromDb = () => {
-    fetch('http://localhost:3001/api/getData')
+    fetch("http://localhost:3001/api/getData")
       .then((data) => data.json())
       .then((res) => this.setState({ data: res.data }));
   };
@@ -57,7 +56,7 @@ class App extends Component {
       ++idToBeAdded;
     }
 
-    axios.post('http://localhost:3001/api/putData', {
+    axios.post("http://localhost:3001/api/putData", {
       id: idToBeAdded,
       message: message,
     });
@@ -74,7 +73,7 @@ class App extends Component {
       }
     });
 
-    axios.delete('http://localhost:3001/api/deleteData', {
+    axios.delete("http://localhost:3001/api/deleteData", {
       data: {
         id: objIdToDelete,
       },
@@ -92,7 +91,7 @@ class App extends Component {
       }
     });
 
-    axios.post('http://localhost:3001/api/updateData', {
+    axios.post("http://localhost:3001/api/updateData", {
       id: objIdToUpdate,
       update: { message: updateToApply },
     });
@@ -107,30 +106,30 @@ class App extends Component {
       <div>
         <ul>
           {data.length <= 0
-            ? 'NO DB ENTRIES YET'
+            ? "NO DB ENTRIES YET"
             : data.map((dat) => (
-                <li style={{ padding: '10px' }} key={data.message}>
-                  <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />
-                  <span style={{ color: 'gray' }}> data: </span>
+                <li style={{ padding: "10px" }} key={data.message}>
+                  <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
+                  <span style={{ color: "gray" }}> data: </span>
                   {dat.message}
                 </li>
               ))}
         </ul>
-        <div style={{ padding: '10px' }}>
+        <div style={{ padding: "10px" }}>
           <input
             type="text"
             onChange={(e) => this.setState({ message: e.target.value })}
             placeholder="add something in the database"
-            style={{ width: '200px' }}
+            style={{ width: "200px" }}
           />
           <button onClick={() => this.putDataToDB(this.state.message)}>
             ADD
           </button>
         </div>
-        <div style={{ padding: '10px' }}>
+        <div style={{ padding: "10px" }}>
           <input
             type="text"
-            style={{ width: '200px' }}
+            style={{ width: "200px" }}
             onChange={(e) => this.setState({ idToDelete: e.target.value })}
             placeholder="put id of item to delete here"
           />
@@ -138,16 +137,16 @@ class App extends Component {
             DELETE
           </button>
         </div>
-        <div style={{ padding: '10px' }}>
+        <div style={{ padding: "10px" }}>
           <input
             type="text"
-            style={{ width: '200px' }}
+            style={{ width: "200px" }}
             onChange={(e) => this.setState({ idToUpdate: e.target.value })}
             placeholder="id of item to update here"
           />
           <input
             type="text"
-            style={{ width: '200px' }}
+            style={{ width: "200px" }}
             onChange={(e) => this.setState({ updateToApply: e.target.value })}
             placeholder="put new value of the item here"
           />
