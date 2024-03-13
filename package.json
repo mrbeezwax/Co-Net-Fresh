@@ -1,5 +1,5 @@
 {
-  "name": "Co-Net",
+  "name": "Co-Net-Fresh",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,15 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/lab": "^4.0.0-alpha.51",
-    "chromedriver": "^81.0.0",
-    "concurrently": "^4.0.1",
-    "selenium-webdriver": "^4.0.0-alpha.7"
+    "concurrently": "^8.2.2",
+    "selenium-webdriver": "^4.18.1"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
-    "mocha": "^7.1.2",
-    "react-edit-inline": "^1.0.8"
+    "mocha": "^10.3.0"
   }
 }
