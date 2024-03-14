@@ -37,7 +37,7 @@ io.on("connection", function (socket) {
       // If timeout for id doesnt exist, user was timedout and is trying to reconnect or is first time joining
       axios
         .put(`http://localhost:3001/users/${username}`, {
-          status: setStatus
+          status: setStatus,
         })
         .then(() => {
           // console.log("logged in as " + username);

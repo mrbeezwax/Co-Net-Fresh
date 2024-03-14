@@ -2,7 +2,7 @@
  * Parent Route: /user
  */
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 // Commented cause i think it's not being used
@@ -17,10 +17,10 @@ const router = express.Router();
 //   })
 // });
 
-router.get('/currentuser', (req, res) => {
+router.get("/currentuser", (req, res) => {
   if (req.user === undefined) {
     return res.json({
-      username: "Guest"
+      username: "Guest",
     });
   } else {
     return res.json({
@@ -38,7 +38,7 @@ router.get('/currentuser', (req, res) => {
       status: req.user.status,
       forumPosts: req.user.forumPosts,
       currentPartyId: req.user.currentPartyId,
-      games: req.user.games
+      games: req.user.games,
     });
   }
 });

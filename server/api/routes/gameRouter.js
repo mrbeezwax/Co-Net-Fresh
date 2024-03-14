@@ -8,9 +8,7 @@ const GameModel = require("../models/gameModel");
 // Create a game
 router.post("/createGame", function (req, res) {
   let game = new GameModel();
-  const {
-    name
-  } = req.body;
+  const { name } = req.body;
   // Start
   if (!name) {
     return res.json({
@@ -19,7 +17,8 @@ router.post("/createGame", function (req, res) {
     });
   }
 
-  GameModel.countDocuments({
+  GameModel.countDocuments(
+    {
       name: name,
     },
     function (err, count) {
@@ -57,7 +56,8 @@ router.post("/createGame", function (req, res) {
 //Delete a game
 router.delete("/:name", function (req, res) {
   var queryName = req.params.name;
-  GameModel.findOneAndDelete({
+  GameModel.findOneAndDelete(
+    {
       name: queryName,
     },
     function (err, obj) {
@@ -75,7 +75,8 @@ router.delete("/:name", function (req, res) {
 router.put("/:name", function (req, res) {
   var queryName = req.params.name;
   var body = req.body;
-  GameModel.findOneAndUpdate({
+  GameModel.findOneAndUpdate(
+    {
       name: queryName,
     },
     body,
@@ -96,7 +97,8 @@ router.put("/:name", function (req, res) {
 //Get a game by name
 router.get("/name/:name", function (req, res) {
   var queryName = req.params.name;
-  GameModel.findOne({
+  GameModel.findOne(
+    {
       name: queryName,
     },
     function (err, obj) {
@@ -147,9 +149,11 @@ router.put("/addGameTag/:name", function (req, res) {
   var queryName = req.params.name;
   var body = req.body;
   var tag = body.name;
-  GameModel.findOneAndUpdate({
+  GameModel.findOneAndUpdate(
+    {
       name: queryName,
-    }, {
+    },
+    {
       $addToSet: {
         gameTags: tag,
       },
@@ -173,9 +177,11 @@ router.put("/removeGameTag/:name", function (req, res) {
   var queryName = req.params.name;
   var body = req.body;
   var tag = body.name;
-  GameModel.findOneAndUpdate({
+  GameModel.findOneAndUpdate(
+    {
       name: queryName,
-    }, {
+    },
+    {
       $pull: {
         gameTags: tag,
       },
@@ -206,9 +212,11 @@ router.put("/addComment/:name", function (req, res) {
     comment: comment,
     rating: rating,
   };
-  GameModel.findOneAndUpdate({
+  GameModel.findOneAndUpdate(
+    {
       name: queryName,
-    }, {
+    },
+    {
       $push: {
         gameCommentsAndRatings: commentAndTagObj,
       },
@@ -239,9 +247,11 @@ router.put("/removeComment/:name", function (req, res) {
     comment: comment,
     rating: rating,
   };
-  GameModel.findOneAndUpdate({
+  GameModel.findOneAndUpdate(
+    {
       name: queryName,
-    }, {
+    },
+    {
       $pull: {
         gameCommentsAndRatings: commentAndTagObj,
       },

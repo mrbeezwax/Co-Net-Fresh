@@ -1,94 +1,105 @@
 /*
  * Parent Route: /userTags
  */
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const UserTagModel = require('../models/userTagModel');
+const UserTagModel = require("../models/userTagModel");
 
 // Get all tags
-router.get('/', function (req, res) {
-    UserTagModel.find((err, tag) => {
-        if (err) return res.json({
-            success: false,
-            error: err
-        });
-        return res.json({
-            success: true,
-            tagObj: tag
-        });
+router.get("/", function (req, res) {
+  UserTagModel.find((err, tag) => {
+    if (err)
+      return res.json({
+        success: false,
+        error: err,
+      });
+    return res.json({
+      success: true,
+      tagObj: tag,
     });
-})
+  });
+});
 
 // Get a tag by name
-router.get('/name/:name', function (req, res) {
-    var queryName = req.params.name;
-    UserTagModel.findOne({
-        name: queryName
-    }, function (err, obj) {
-        if (err) return res.json({
-            success: false,
-            error: err
+router.get("/name/:name", function (req, res) {
+  var queryName = req.params.name;
+  UserTagModel.findOne(
+    {
+      name: queryName,
+    },
+    function (err, obj) {
+      if (err)
+        return res.json({
+          success: false,
+          error: err,
         });
-        return res.send(obj);
-    });
-})
+      return res.send(obj);
+    }
+  );
+});
 
 // Create a tag
-router.post('/create', function (req, res) {
-    let tag = new UserTagModel();
-    const {
-        name
-    } = req.body;
+router.post("/create", function (req, res) {
+  let tag = new UserTagModel();
+  const { name } = req.body;
 
-    if (!name) {
-        return res.json({
-            created: false,
-            error: 'INVALID INPUTS'
+  if (!name) {
+    return res.json({
+      created: false,
+      error: "INVALID INPUTS",
+    });
+  }
+  //name = name.trim();
+  UserTagModel.countDocuments(
+    {
+      name: name,
+    },
+    function (err, count) {
+      if (err) {
+        return res.send({
+          success: false,
+          message: "Error: Server error",
         });
-    }
-    //name = name.trim();
-    UserTagModel.countDocuments({
-        name: name
-    }, function (err, count) {
+      } else if (count > 0) {
+        return res.send({
+          success: false,
+          message:
+            "Error: Tag Name Already Exists, Please select from created tags.",
+        });
+      }
+      tag.name = name;
+      tag.save((err, tag) => {
         if (err) {
-            return res.send({
-                success: false,
-                message: 'Error: Server error'
-            });
-        } else if (count > 0) {
-            return res.send({
-                success: false,
-                message: 'Error: Tag Name Already Exists, Please select from created tags.'
-            });
-        }
-        tag.name = name;
-        tag.save((err, tag) => {
-            if (err) {
-                return res.send({
-                    success: false,
-                    message: 'Error: Server error'
-                });
-            }
-            return res.send({
-                success: true,
-                name: tag,
-                message: 'Tag Created'
-            });
-        });
-    });
-})
-//delete a game tag
-router.delete("/:name", function(req, res){
-    var queryName = req.params.name;
-    UserTagModel.findOneAndDelete({
-        name: queryName
-    }, function (err, obj) {
-        if (err) return res.json({
+          return res.send({
             success: false,
-            error: err
+            message: "Error: Server error",
+          });
+        }
+        return res.send({
+          success: true,
+          name: tag,
+          message: "Tag Created",
         });
-        return res.send(obj);
-    });
-})
+      });
+    }
+  );
+});
+//delete a game tag
+router.delete("/:name", function (req, res) {
+  var queryName = req.params.name;
+  UserTagModel.findOneAndDelete(
+    {
+      name: queryName,
+    },
+    function (err, obj) {
+      if (err)
+        return res.json({
+          success: false,
+          error: err,
+        });
+      return res.send(obj);
+    }
+  );
+});
 
 module.exports = router;
