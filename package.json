@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
-    "testies": "mocha"
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\""
   },
   "keywords": [],
   "author": "",
@@ -13,8 +12,5 @@
   "dependencies": {
     "concurrently": "^8.2.2",
     "selenium-webdriver": "^4.18.1"
-  },
-  "devDependencies": {
-    "mocha": "^10.3.0"
   }
 }
