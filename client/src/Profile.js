@@ -1,23 +1,23 @@
 import React, { Component } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import TopMenu from "./TopMenu";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import Menu from "./ProfileMenu.js";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import EditProfile from "./editProfile";
 import Status from "./status.js";
 import Thumbs from "./thumbs";
 import { Multiselect } from "multiselect-react-dropdown";
-import Grid from "@material-ui/core/Grid";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
+import Grid from "@mui/material/Grid";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 import Error404 from "./Error404";
 import AddTags from "./AddTags";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { Link } from "@material-ui/core";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import { Link } from "@mui/material";
 
 class Profile extends Component {
   constructor(props) {

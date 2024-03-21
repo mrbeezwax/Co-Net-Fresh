@@ -1,15 +1,15 @@
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
 import axios from "axios";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 import mainStyles from "./main.module.css";
+import { useTheme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     transform: "translateZ(0)",
     height: 768,
@@ -18,17 +18,17 @@ const useStyles = makeStyles((theme) => ({
 
   modal: {
     display: "flex",
-    padding: theme.spacing(1),
+    padding: useTheme().spacing(1),
     alignItems: "center",
     justifyContent: "center",
   },
   paper: {
     width: 400,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: useTheme().palette.background.paper,
     border: "0.5px solid #a9a9a9",
     borderRadius: 10,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    boxShadow: useTheme().shadows[5],
+    padding: useTheme().spacing(2, 4, 3),
     marginBottom: 200,
     marginRight: 400,
     marginTop: 100,
@@ -127,7 +127,7 @@ function onSignUp(e, history, fn, ln, em, cEm, pass, cPass, uname) {
   }
 }
 
-export default function ServerModal(props) {
+export default function Login(props) {
   const { history } = props;
   const classes = useStyles();
   const rootRef = React.useRef(null);
@@ -293,9 +293,6 @@ export default function ServerModal(props) {
                 </Grid>
               </Grid>
             </form>
-            <Box mt={5}>
-              <copyright />
-            </Box>
           </p>
         </div>
       </Modal>

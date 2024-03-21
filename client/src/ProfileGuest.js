@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import TopMenu from "./TopMenu";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import Menu from "./ProfileMenuGuest.js";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import EditProfile from "./editProfile";
 import Thumbs from "./thumbs";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 
 class Profile extends Component {
   constructor(props) {

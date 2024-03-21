@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from "@material-ui/core/Grid";
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from "@material-ui/core/Typography";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import TopMenu from "./TopMenu";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
+import { createMuiTheme } from "@mui/material/styles";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 import mainStyles from "./main.module.css";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import GameMenu from "./GameMenu";
 import Error404 from "./Error404";
 

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import { Link } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
+import { Link } from "@mui/material";
 
 class friend extends Component {
   constructor(props) {

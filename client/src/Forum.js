@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from "@material-ui/core/Typography";
+import Button from "@mui/material/Button";
+//import FormControlLabel from '@mui/material/FormControlLabel';
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+//import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from "@mui/material/Typography";
 import TopMenu from "./TopMenu";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
-import FilterListIcon from "@material-ui/icons/FilterList";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import { createMuiTheme } from "@mui/material/styles";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import mainStyles from "./main.module.css";
-import Divider from "@material-ui/core/Divider";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+import Divider from "@mui/material/Divider";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useTheme } from "@mui/material/styles";
 
 const monthNames = [
   "January",
@@ -236,10 +237,10 @@ class Forum extends Component {
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.secondary,
         "& svg": {
-          margin: theme.spacing(1.5),
+          margin: useTheme().spacing(1.5),
         },
         "& hr": {
-          margin: theme.spacing(0, 0.5),
+          margin: useTheme().spacing(0, 0.5),
         },
       },
     };

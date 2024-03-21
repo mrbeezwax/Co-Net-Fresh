@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
-import { Link } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
+import { Link } from "@mui/material";
 
 class player extends Component {
   constructor(props) {

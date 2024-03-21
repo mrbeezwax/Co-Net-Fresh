@@ -84,10 +84,10 @@ const steamRouter = require("./api/routes/steamRouter");
 const messageThreadRouter = require("./api/routes/messageThreadRouter");
 const partyRouter = require("./api/routes/partyRouter");
 // this is our MongoDB database
-const dbRoute = `mongodb+srv://${process.env.DB_CREDENTIALS}@cluster0-8hzh3.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
+const dbRoute = `mongodb+srv://${process.env.DB_CREDENTIALS}@conetfresh.7gycna8.mongodb.net/`;
 
 // connects our back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbRoute);
 
 let db = mongoose.connection;
 
@@ -118,6 +118,7 @@ app.use(
 app.use("/auth", steamRouter);
 app.use("/messageThread", messageThreadRouter);
 app.use("/party", partyRouter);
+
 // launch our backend into a port
 server.listen(process.env.PORT, () =>
   console.log(`CO-NET LISTENING ON PORT ${process.env.PORT}`)

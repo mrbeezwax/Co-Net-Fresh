@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import CardContent from "@material-ui/core/CardContent";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
+import CardContent from "@mui/material/CardContent";
 import JoinParty from "./JoinParty";
-import { Link } from "@material-ui/core";
+import { Link } from "@mui/material";
 
 class PartyCard extends Component {
   constructor(props) {

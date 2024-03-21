@@ -1,16 +1,16 @@
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
 import logo from "./logo.png";
 import bgd from "./background.jpeg";
 import axios from "axios";
 import styles from "./main.module.css";
+import { useTheme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     transform: "translateZ(0)",
     height: 768,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
   modal: {
     display: "flex",
-    padding: theme.spacing(1),
+    padding: useTheme().spacing(1),
     alignItems: "center",
     justifyContent: "center",
 
@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: 400,
     height: 400,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: useTheme().palette.background.paper,
     border: "0.5px solid #a9a9a9",
     borderRadius: 10,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    boxShadow: useTheme().shadows[5],
+    padding: useTheme().spacing(2, 4, 3),
     marginBottom: 200,
     marginRight: 400,
   },
@@ -58,7 +58,7 @@ function onSteamLogin(e) {
   });
 }
 
-export default function ServerModal(props) {
+export default function Login(props) {
   const { history } = props;
   const classes = useStyles();
   const rootRef = React.useRef(null);
@@ -96,58 +96,57 @@ export default function ServerModal(props) {
                   align="center"
                   id="server-modal-title"
                 >
-                  Connecting Gamers Worldwide. <p></p>
+                  Connecting Gamers Worldwide.
                 </Typography>
               </Grid>
               <Grid item xs={12}></Grid>
             </Grid>
-            <form className={classes.form} noValidate>
-              <Grid container spacing={4}>
-                <Grid item xs={12}>
-                  <Button
-                    type="button"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    onClick={() => history.push("/signup")}
-                  >
-                    Sign up with Email
-                  </Button>
+            <div>
+              <form className={classes.form} noValidate>
+                <Grid container spacing={4}>
+                  <Grid item xs={12}>
+                    <Button
+                      type="button"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                      onClick={() => history.push("/signup")}
+                    >
+                      Sign up with Email
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}></Grid>
                 </Grid>
-                <Grid item xs={12}></Grid>
-              </Grid>
-              <Grid container spacing={10}>
-                <Grid item xs={12}></Grid>
-                <Grid item xs={12} style={{ textAlign: "right" }}>
-                  <Typography
-                    display="inline"
-                    component="h2"
-                    fontsize={18}
-                    align="center"
-                    id="server-modal-title"
-                  >
-                    Already have an account?
-                  </Typography>
-                  <Typography
-                    className={classes.links}
-                    display="inline"
-                    color="primary"
-                    component="h2"
-                    fontsize={18}
-                    align="center"
-                    onClick={() => history.push("/signin")}
-                    id="server-modal-title"
-                  >
-                    {" "}
-                    Sign in.{" "}
-                  </Typography>
+                <Grid container spacing={10}>
+                  <Grid item xs={12}></Grid>
+                  <Grid item xs={12} style={{ textAlign: "right" }}>
+                    <Typography
+                      display="inline"
+                      component="h2"
+                      fontsize={18}
+                      align="center"
+                      id="server-modal-title"
+                    >
+                      Already have an account?
+                    </Typography>
+                    <Typography
+                      className={classes.links}
+                      display="inline"
+                      color="primary"
+                      component="h2"
+                      fontsize={18}
+                      align="center"
+                      onClick={() => history.push("/signin")}
+                      id="server-modal-title"
+                    >
+                      {" "}
+                      Sign in.{" "}
+                    </Typography>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </form>
-            <Box mt={5}>
-              <copyright />
-            </Box>
+              </form>
+            </div>
           </p>
         </div>
       </Modal>

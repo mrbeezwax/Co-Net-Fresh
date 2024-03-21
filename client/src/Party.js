@@ -1,18 +1,17 @@
 import React, { Fragment } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
 import axios from "axios";
 import { InstantSearch, Index } from "react-instantsearch-dom";
 import Tags from "./lib/Tags";
 import algoliasearch from "algoliasearch/lite";
 import "./tags.css";
-import { Redirect } from "react-router-dom";
 
 export const TagSelectedComponent = ({ hit }) => (
   <Fragment>
@@ -125,8 +124,8 @@ export default function AlertDialog(props) {
 
   // Game Selection
   const client = algoliasearch(
-    "T7MES4D4M7",
-    "3fc5bf346a8a53b2ef1c596cf747cb02"
+    process.env.REACT_APP_ALGOLIA_APP_ID,
+    process.env.REACT_APP_ALGOLIA_SEARCH_KEY
   );
 
   const onAddTag = (hit) => {
@@ -143,7 +142,7 @@ export default function AlertDialog(props) {
       <Typography className="menuButtons" onClick={handleClickOpenUp}>
         Create Party
       </Typography>
-      {redirect ? <Redirect to={`/game/${selectedGame._id}`}></Redirect> : null}
+      {redirect ? redirect(`/game/${selectedGame._id}`) : null}
       <Dialog
         maxWidth="sm"
         open={open1}

@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import TopMenu from "./TopMenu";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import mainStyles from "./main.module.css";
-import CheckIcon from "@material-ui/icons/Check";
+import CheckIcon from "@mui/icons-material/Check";
 import algoliasearch from "algoliasearch/lite";
 import Tags from "./lib/Tags";
 import "./tags.css";
@@ -208,10 +208,10 @@ class CreateMessage extends Component {
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.secondary,
         "& svg": {
-          margin: theme.spacing(1.5),
+          margin: useTheme().spacing(1.5),
         },
         "& hr": {
-          margin: theme.spacing(0, 0.5),
+          margin: useTheme().spacing(0, 0.5),
         },
       },
     };

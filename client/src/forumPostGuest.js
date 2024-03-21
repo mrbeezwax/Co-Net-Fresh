@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import TopMenu from "./TopMenu";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import styles from "./main.module.css";
 import profilePic from "./profilePic.png";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import ForumComment from "./forumComment.js";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
-import TextField from "@material-ui/core/TextField";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import CardContent from "@mui/material/CardContent";
+import TextField from "@mui/material/TextField";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 class forumPost extends Component {
   constructor(props) {

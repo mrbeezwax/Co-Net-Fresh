@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import TopMenu from "./TopMenu";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@mui/material/styles";
 import styles from "./main.module.css";
 import profilePic from "./profilePic.png";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import Menu from "./ProfileMenu.js";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 class editProfile extends Component {
   constructor(props) {

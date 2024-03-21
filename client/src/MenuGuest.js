@@ -1,50 +1,51 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
 import logo from "./logo.png";
-import MailIcon from "@material-ui/icons/Mail";
-import { fade, makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import MailIcon from "@mui/icons-material/Mail";
+import { fade, makeStyles } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import InputBase from "@mui/material/InputBase";
+import Badge from "@mui/material/Badge";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import axios from "axios";
+import { useTheme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   grow: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: useTheme().spacing(2),
   },
   title: {
     display: "none",
-    [theme.breakpoints.up("sm")]: {
+    [useTheme().breakpoints.up("sm")]: {
       display: "block",
     },
   },
   search: {
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.black, 0.15),
+    borderRadius: useTheme().shape.borderRadius,
+    backgroundColor: fade(useTheme().palette.common.black, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.black, 0.25),
+      backgroundColor: fade(useTheme().palette.common.black, 0.25),
     },
-    marginRight: theme.spacing(2),
+    marginRight: useTheme().spacing(2),
     marginLeft: 0,
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
+    [useTheme().breakpoints.up("sm")]: {
+      marginLeft: useTheme().spacing(3),
       width: "auto",
     },
   },
   searchIcon: {
-    width: theme.spacing(7),
+    width: useTheme().spacing(7),
     height: "100%",
     position: "absolute",
     pointerEvents: "none",
@@ -56,22 +57,22 @@ const useStyles = makeStyles((theme) => ({
     color: "secondary",
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create("width"),
+    padding: useTheme().spacing(1, 1, 1, 7),
+    transition: useTheme().transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("md")]: {
+    [useTheme().breakpoints.up("md")]: {
       width: 200,
     },
   },
   sectionDesktop: {
     display: "none",
-    [theme.breakpoints.up("md")]: {
+    [useTheme().breakpoints.up("md")]: {
       display: "flex",
     },
   },
   sectionMobile: {
     display: "flex",
-    [theme.breakpoints.up("md")]: {
+    [useTheme().breakpoints.up("md")]: {
       display: "none",
     },
   },

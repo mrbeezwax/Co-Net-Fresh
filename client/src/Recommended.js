@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
-import InfoIcon from "@material-ui/icons/Info";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
+import InfoIcon from "@mui/icons-material/Info";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 import * as fuzz from "fuzzball";
 
 export default function AlertDialog() {

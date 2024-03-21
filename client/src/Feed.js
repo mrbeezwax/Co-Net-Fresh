@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import TopMenu from "./TopMenu";
 import axios from "axios";
-import { createMuiTheme } from "@material-ui/core/styles";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
-import FilterListIcon from "@material-ui/icons/FilterList";
+import { createMuiTheme } from "@mui/material/styles";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
+import FilterListIcon from "@mui/icons-material/FilterList";
 import mainStyles from "./main.module.css";
 import Recommended from "./Recommended";
 

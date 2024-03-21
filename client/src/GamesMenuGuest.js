@@ -1,10 +1,10 @@
 import React from "react";
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from "@material-ui/core/Grid";
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from "@material-ui/core/Typography";
+//import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from "@mui/material/Grid";
+//import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from "@mui/material/Typography";
 import leaguePhoto from "./leaguePhoto.jpg";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 
 export default function Games(props) {
   const titleStyle = {

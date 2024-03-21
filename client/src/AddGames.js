@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { InstantSearch, Index } from "react-instantsearch-dom";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 import styles from "./main.module.css";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import algoliasearch from "algoliasearch/lite";
 import Tags from "./lib/Tags";
 import "./tags.css";
@@ -80,8 +80,8 @@ class AddGames extends Component {
 
   render() {
     const client = algoliasearch(
-      "T7MES4D4M7",
-      "3fc5bf346a8a53b2ef1c596cf747cb02"
+      process.env.REACT_APP_ALGOLIA_APP_ID,
+      process.env.REACT_APP_ALGOLIA_SEARCH_KEY
     );
 
     var selectedGames = [];

@@ -1,16 +1,16 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 import styles from "./main.module.css";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
 import UserCard from "./UserCard";
-import MuiAlert from "@material-ui/lab/Alert";
-import { Link } from "@material-ui/core";
+import MuiAlert from "@mui/lab/Alert";
+import { Link } from "@mui/material";
 import axios from "axios";
 import mainStyles from "./main.module.css";
 

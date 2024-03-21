@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from "@material-ui/core/Typography";
+//import FormControlLabel from '@mui/material/FormControlLabel';
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+//import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from "@mui/material/Typography";
 import axios from "axios";
-import Brightness1Icon from "@material-ui/icons/Brightness1";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 import AddGames from "./AddGames";
 
 export default function Games(props) {
