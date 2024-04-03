@@ -49,17 +49,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function onSteamLogin(e) {
-  e.preventDefault();
-  console.log("Steam Clicked");
-  axios.get("http://localhost:3000/auth/steam").then((json) => {
-    console.log("steam login json");
-    console.log(json);
-  });
-}
-
-export default function Login(props) {
-  const { history } = props;
+const Login = ({ history }) => {
   const classes = useStyles();
   const rootRef = React.useRef(null);
 
@@ -152,4 +142,6 @@ export default function Login(props) {
       </Modal>
     </div>
   );
-}
+};
+
+export default Login;

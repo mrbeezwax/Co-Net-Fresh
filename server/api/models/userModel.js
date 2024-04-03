@@ -74,6 +74,10 @@ const UserSchema = new Schema({
     type: String,
     default: "",
   },
+  steamId: {
+    type: String,
+    default: "",
+  },
   userTags: [UserTagSchema],
   friends: [FriendSchema],
   games: [UsersGamesSchema],
