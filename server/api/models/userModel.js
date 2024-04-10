@@ -2,7 +2,6 @@
  * Schema: User
  */
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 const mongooseAlgolia = require("mongoose-algolia");
 
@@ -88,20 +87,13 @@ const UserSchema = new Schema({
   votedPosts: [VotedPostSchema],
 });
 
-UserSchema.methods.generateHash = function (password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
-UserSchema.methods.validPassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
-};
-
 // UserSchema.plugin(mongooseAlgolia, {
 //   appId: "T7MES4D4M7",
 //   apiKey: "527cf23a995edb665d518b0cdf72b7b9",
 //   indexName: "co-net_users",
 // });
 
-let UserModel = mongoose.model("User", UserSchema);
+const UserModel = mongoose.model("User", UserSchema);
 // UserModel.SyncToAlgolia().then(console.log("Users synced with Algolia"));
 // UserModel.SetAlgoliaSettings({
 //   searchableAttributes: ["username"],

@@ -6,115 +6,88 @@ const router = express.Router();
 const UserModel = require("../models/userModel");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const multer = require("multer");
-const upload = multer({
-  dest: "uploads/",
-}).single("file");
-const fs = require("fs");
-const cloudinary = require("cloudinary");
-
-cloudinary.config({
-  cloud_name: "co-net-pix",
-  api_key: "472288961331361",
-  api_secret: "VylP7m3EhxWbbzWEE8NBAcbcxKs",
-});
+const sanitize = require("sanitize");
+const bcrypt = require("bcryptjs");
 
 // Create a user
-router.post("/signup", function (req, res) {
-  let user = new UserModel();
-  const { username, firstName, lastName, password } = req.body;
+router.post(
+  "/signup",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const { firstName, lastName, password } = req.body;
 
-  let { emailAddress } = req.body;
+    let { emailAddress, username } = req.body;
 
-  // Start
-  if (!username || !firstName || !lastName || !emailAddress || !password) {
-    return res.json({
-      success: false,
-      message: "MISSING INPUTS",
-    });
-  }
-
-  // Validate username
-  // eslint-disable-next-line no-useless-escape
-  const format = /[ !@#$%^&*()+\-.=\[\]{};':"\\|,<>\/?]/;
-  if (format.test(username) || username === "Guest" || username === "guest") {
-    return res.json({
-      created: false,
-      message: "ILLEGAL USERNAME",
-    });
-  }
-
-  if (password.length < 8) {
-    return res.json({
-      created: false,
-      message: "SHORT PASSWORD",
-    });
-  }
-
-  UserModel.countDocuments(
-    {
-      username: username,
-    },
-    function (err, count) {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Error: Server error",
-        });
-      } else if (count > 0) {
-        return res.send({
-          success: false,
-          message: "Error: Account already exists with that username.",
-        });
-      }
-
-      emailAddress = emailAddress.toLowerCase();
-      emailAddress = emailAddress.trim();
-      // Steps:
-      // 1. Verify email doesn't exist
-      // 2. Save
-      UserModel.countDocuments(
-        {
-          emailAddress: emailAddress,
-        },
-        (err, previousUsers) => {
-          if (err) {
-            return res.send({
-              success: false,
-              message: "Error: Server error",
-            });
-          } else if (previousUsers > 0) {
-            return res.send({
-              success: false,
-              message: "Error: Account already exists with that email.",
-            });
-          }
-          // Save the new user
-          user.emailAddress = emailAddress;
-          user.password = user.generateHash(password);
-          user.username = username;
-          user.firstName = firstName;
-          user.lastName = lastName;
-          user.profilePhoto =
-            "https://res.cloudinary.com/co-net-pix/image/upload/v1586238488/default_user_avatar.jpg";
-          user.save((err, user) => {
-            if (err) {
-              return res.send({
-                success: false,
-                message: "Error: Server error",
-              });
-            }
-            return res.send({
-              success: true,
-              username: user,
-              message: "Signed up",
-            });
-          });
-        }
-      );
+    // Input validation
+    if (!username || !firstName || !lastName || !emailAddress || !password) {
+      return res.status(400).json({
+        message: "Missing required fields",
+      });
     }
-  );
-});
+
+    // Validate username
+    if (username === "Guest" || username === "guest") {
+      return res.status(400).json({
+        message: "Username cannot be 'Guest' or 'guest'",
+      });
+    }
+
+    // Sanitize username
+    username = sanitize(username);
+
+    // Validate username format
+    // eslint-disable-next-line no-useless-escape
+    const format = /[ !@#$%^&*()+\-.=\[\]{};':"\\|,<>\/?]/;
+    if (format.test(username)) {
+      return res.status(400).json({
+        message: "Username contains invalid characters",
+      });
+    }
+
+    // Validate password length
+    if (password.length < 8) {
+      return res.status(400).json({
+        message: "Password must be at least 8 characters",
+      });
+    }
+
+    // Validate email address
+    emailAddress = emailAddress.toLowerCase().trim();
+
+    // Check for duplicate username
+    let userCount = await UserModel.countDocuments({ username });
+    if (userCount > 0) {
+      return res.status(400).json({
+        message: "Username already exists",
+      });
+    }
+
+    // Check for duplicate email
+    userCount = await UserModel.countDocuments({ emailAddress });
+    if (userCount > 0) {
+      return res.status(400).json({
+        message: "Email already exists",
+      });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create and save user
+    const user = await UserModel.create({
+      username,
+      firstName,
+      lastName,
+      emailAddress,
+      password: hashedPassword,
+    });
+
+    res.json({
+      message: "User created successfully",
+      user,
+    });
+  }
+);
 
 // Log out by deleting cookie
 router.get("/logout", function (req, res) {
@@ -168,56 +141,32 @@ router.delete("/:username", function (req, res) {
   );
 });
 
-// Create a JWT token when signing in and saves it in a cookie
-router.post("/signin", function (req, res, next) {
-  passport.authenticate(
-    "local",
-    {
-      session: false,
-    },
-    function (err, user, info) {
-      if (err) return next(err);
-      if (!user)
-        return res.send({
-          message: info.message,
-          success: false,
-        });
-      // console.log(user);
-      const body = {
-        email: user.emailAddress,
-      };
-      req.login(
-        body,
-        {
-          session: false,
-        },
-        (error) => {
-          if (error)
-            res.status(400).send({
-              error,
-            });
-          jwt.sign(
-            JSON.stringify(body),
-            process.env.JWT_SECRET,
-            (err, token) => {
-              if (err) return res.json(err);
-              // Set cookie header
-              res.cookie("jwt", token, {
-                httpOnly: true,
-                sameSite: true,
-              });
-              return res.send({
-                username: user.username,
-                email: user.emailAddress,
-                success: true,
-              });
-            }
-          );
+// Sign in Route using Passport JWT Strategy
+router.post(
+  "/signin",
+  passport.authenticate("jwt", { session: false }),
+  function (req, res) {
+    const payload = {
+      id: req.user.id,
+      username: req.user.username,
+    };
+
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: 3600 },
+      (err, token) => {
+        if (err) {
+          return res.status(500).json({ message: "Error signing token", err });
         }
-      );
-    }
-  )(req, res, next);
-});
+        return res.json({
+          success: true,
+          token: "Bearer " + token,
+        });
+      }
+    );
+  }
+);
 
 //edit a user
 router.put("/:username", function (req, res) {
@@ -265,59 +214,59 @@ router.get("/", function (req, res) {
 });
 
 // Update a user's photo
-router.put("/photo/:username", function (req, res) {
-  upload(req, res, function (err) {
-    if (err instanceof multer.MulterError) {
-      return res.status(500).json(err);
-    } else if (err) {
-      return res.status(500).json(err);
-    }
-    var queryUsername = req.params.username;
-    UserModel.findOne(
-      {
-        username: queryUsername,
-      },
-      function (err, obj) {
-        var body = obj;
-        cloudinary.uploader.upload(
-          req.file.path,
-          function (result) {
-            body.profilePhoto = result.url;
-            UserModel.findOneAndUpdate(
-              {
-                username: queryUsername,
-              },
-              body,
-              function (err) {
-                if (err)
-                  return res.json({
-                    success: false,
-                    error: err,
-                  });
-                // Remove temp file
-                fs.unlink(req.file.path, (err) => {
-                  if (err) {
-                    console.log(err);
-                    return res.json({
-                      success: false,
-                    });
-                  }
-                });
-                return res.json({
-                  success: true,
-                  user: body,
-                });
-              }
-            );
-          },
-          {
-            folder: "user_photos",
-          }
-        );
-      }
-    );
-  });
-});
+// router.put("/photo/:username", function (req, res) {
+//   upload(req, res, function (err) {
+//     if (err instanceof multer.MulterError) {
+//       return res.status(500).json(err);
+//     } else if (err) {
+//       return res.status(500).json(err);
+//     }
+//     var queryUsername = req.params.username;
+//     UserModel.findOne(
+//       {
+//         username: queryUsername,
+//       },
+//       function (err, obj) {
+//         var body = obj;
+//         cloudinary.uploader.upload(
+//           req.file.path,
+//           function (result) {
+//             body.profilePhoto = result.url;
+//             UserModel.findOneAndUpdate(
+//               {
+//                 username: queryUsername,
+//               },
+//               body,
+//               function (err) {
+//                 if (err)
+//                   return res.json({
+//                     success: false,
+//                     error: err,
+//                   });
+//                 // Remove temp file
+//                 fs.unlink(req.file.path, (err) => {
+//                   if (err) {
+//                     console.log(err);
+//                     return res.json({
+//                       success: false,
+//                     });
+//                   }
+//                 });
+//                 return res.json({
+//                   success: true,
+//                   user: body,
+//                 });
+//               }
+//             );
+//           },
+//           {
+//             folder: "user_photos",
+//           }
+//         );
+//       }
+//     );
+//   });
+// });
 
 // Temp?
 // Get a user's photo url

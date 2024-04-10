@@ -66,31 +66,44 @@ router.delete("/:id", function (req, res) {
               error: err,
             });
           }
-          // Go through allReplyIds and remove each reply from corresponding user
-          obj.allReplyIDs.forEach((reply) => {
-            UserModel.findOneAndUpdate(
-              {
-                username: reply.username,
-              },
-              {
-                $pull: {
-                  forumPosts: { postID: reply.childID },
-                },
-              },
-              { new: true },
-              function (err, doc) {
-                if (err)
-                  return res.json({
-                    success: false,
-                    error: err,
-                  });
+
+          // Get unique usernames
+          const usernames = [
+            ...new Set(obj.allReplyIDs.map((reply) => reply.username)),
+          ];
+
+          // Find all users in one query
+          UserModel.find(
+            {
+              username: { $in: usernames },
+            },
+            function (err, users) {
+              if (err) {
+                return res.json({
+                  success: false,
+                  error: err,
+                });
               }
-            );
-          });
-          return res.json({
-            success: true,
-            forumPostObj: obj,
-          });
+
+              // Update each user object
+              users.forEach((user) => {
+                const replyIDsToRemove = obj.allReplyIDs
+                  .filter((reply) => reply.username === user.username)
+                  .map((reply) => reply.childID);
+
+                user.forumPosts = user.forumPosts.filter(
+                  (post) => !replyIDsToRemove.includes(post.postID)
+                );
+
+                user.save();
+              });
+
+              return res.json({
+                success: true,
+                forumPostObj: obj,
+              });
+            }
+          );
         }
       );
     }

@@ -184,49 +184,9 @@ class Forum extends Component {
       },
     });
 
-    const paperStyle = {
-      marginTop: 8,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    };
-
-    const avatarStyle = {
-      margin: 1,
-      backgroundColor: "gray",
-    };
-
-    const formStyle = {
-      width: "100%", // Fix IE 11 issue.
-      marginTop: 3,
-    };
-
-    const submitStyle = {
-      marginTop: 3,
-      marginBottom: 0,
-      marginRight: 2,
-    };
-
-    const tileStyle = {};
-
-    const gridStyle = {
-      marginTop: 20,
-    };
-
     const titleStyle = {
       marginTop: 20,
       color: "#535353",
-    };
-
-    const gameTitle = {
-      color: "black",
-      marginTop: 20,
-      marginLeft: 8,
-    };
-    const gameDesc = {
-      color: "#535353",
-      marginTop: 5,
-      marginLeft: 8,
     };
 
     const dividerGridStyle = {

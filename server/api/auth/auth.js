@@ -4,46 +4,6 @@ const JWTStrategy = require("passport-jwt").Strategy,
 const SteamStrategy = require("passport-steam").Strategy;
 const UserModel = require("../models/userModel");
 
-// Login Passport
-
-// Local
-// passport.use(
-//   new localStrategy(
-//     {
-//       session: false,
-//     },
-//     (user, password, done) => {
-//       UserModel.findOne(
-//         {
-//           emailAddress: user,
-//         },
-//         function (err, user) {
-//           if (err) {
-//             return done(err);
-//           }
-//           if (!user) {
-//             return done(null, false, {
-//               message: "Incorrect email.",
-//             });
-//           }
-//           if (!user.validPassword(password)) {
-//             return done(null, false, {
-//               message: "Incorrect password.",
-//             });
-//           }
-//           return done(null, user);
-//         }
-//       );
-//     }
-//   )
-// );
-
-// JWT Passport
-// var cookieExtractor = function (req) {
-//   var token = null;
-//   if (req && req.cookies) token = req.cookies["jwt"];
-//   return token;
-// };
 var opts = {};
 opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET;

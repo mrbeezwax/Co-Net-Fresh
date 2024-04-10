@@ -79,8 +79,6 @@ const userRouter = require("./api/routes/userRouter");
 const userTagRouter = require("./api/routes/userTagRouter");
 const gameRouter = require("./api/routes/gameRouter");
 const forumRouter = require("./api/routes/forumPostRouter");
-const secureRouter = require("./api/routes/secureRouter");
-const steamRouter = require("./api/routes/steamRouter");
 const messageThreadRouter = require("./api/routes/messageThreadRouter");
 const partyRouter = require("./api/routes/partyRouter");
 // this is our MongoDB database
@@ -107,17 +105,14 @@ app.use("/users", userRouter);
 app.use("/userTags", userTagRouter);
 app.use("/games", gameRouter);
 app.use("/forum", forumRouter);
-app.use(
-  "/user",
-  passport.authenticate("jwt", {
-    session: false,
-    failureRedirect: "/users/guest",
-  }),
-  secureRouter
-);
-app.use("/auth", steamRouter);
 app.use("/messageThread", messageThreadRouter);
 app.use("/party", partyRouter);
+app.use(
+  "/steam",
+  passport.authenticate("steam", {
+    failureRedirect: "/users/guest",
+  })
+);
 
 // launch our backend into a port
 server.listen(process.env.PORT, () =>
