@@ -5,74 +5,38 @@ const mongoose = require("mongoose"),
   logger = require("morgan"),
   cookieParser = require("cookie-parser"),
   axios = require("axios"),
-  passport = require("passport");
+  passport = require("passport"),
+  session = require("express-session");
 require("dotenv").config();
-require("./api/auth/auth");
+require("./api/auth/auth"); // This initializes the passport strategies
 
 const app = express();
 const server = require("http").Server(app);
-const io = require("socket.io")(server);
-var connectedUsers = {};
-var timeouts = {};
-io.on("connection", function (socket) {
-  // console.log("Client connected");
-  socket.emit("connected");
-  socket.on("login", (username, inParty, status) => {
-    connectedUsers[socket.id] = username;
-    // If user refreshed, set to false to prevent timeout
-    if (timeouts[username]) {
-      // console.log(`${username} refreshed`);
-      timeouts[username] = false;
-    } else {
-      var setStatus = "";
-      if (status === "Invisible") {
-        setStatus = "Invisible";
-      } else if (inParty) {
-        setStatus = "In-Game";
-      } else if (status === "Away") {
-        setStatus = "Away";
-      } else {
-        setStatus = "Active";
-      }
-      // If timeout for id doesnt exist, user was timedout and is trying to reconnect or is first time joining
-      axios
-        .put(`http://localhost:3001/users/${username}`, {
-          status: setStatus,
-        })
-        .then(() => {
-          // console.log("logged in as " + username);
-          timeouts[username] = false;
-        });
-    }
-  });
-
-  socket.on("disconnect", function () {
-    const disconnectedUsername = connectedUsers[socket.id];
-    timeouts[disconnectedUsername] = true;
-    // console.log(`Client ${disconnectedUsername} disconnected`);
-    setTimeout(function () {
-      if (timeouts[disconnectedUsername] == true) {
-        axios
-          .put(`http://localhost:3001/users/${disconnectedUsername}`, {
-            status: "Offline",
-          })
-          .then(() => {
-            console.log(`Client ${disconnectedUsername} timedout`);
-            delete connectedUsers[socket.id];
-            delete timeouts[disconnectedUsername];
-          });
-      }
-    }, 10000); // 10 second till timeout
-  });
-});
 
 app.use(
   cors({
     credentials: true,
-    origin: `http://localhost:3000`,
+    origin: [
+      `http://localhost:3000`,
+      "https://steamcommunity.com",
+      /\.steampowered\.com$/,
+    ],
   })
 );
 app.use(cookieParser(process.env.JWT_SECRET));
+
+// Session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Initialize Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routers
 const userRouter = require("./api/routes/userRouter");
@@ -81,8 +45,9 @@ const gameRouter = require("./api/routes/gameRouter");
 const forumRouter = require("./api/routes/forumPostRouter");
 const messageThreadRouter = require("./api/routes/messageThreadRouter");
 const partyRouter = require("./api/routes/partyRouter");
+
 // this is our MongoDB database
-const dbRoute = `mongodb+srv://${process.env.DB_CREDENTIALS}@conetfresh.7gycna8.mongodb.net/`;
+const dbRoute = `mongodb+srv://${process.env.DB_CREDENTIALS}@conetfresh.7gycna8.mongodb.net/?retryWrites=true&w=majority&appName=CoNetFresh`;
 
 // connects our back end code with the database
 mongoose.connect(dbRoute);
@@ -96,7 +61,11 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
@@ -107,12 +76,13 @@ app.use("/games", gameRouter);
 app.use("/forum", forumRouter);
 app.use("/messageThread", messageThreadRouter);
 app.use("/party", partyRouter);
-app.use(
-  "/steam",
-  passport.authenticate("steam", {
-    failureRedirect: "/users/guest",
-  })
-);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+  next(err);
+});
 
 // launch our backend into a port
 server.listen(process.env.PORT, () =>

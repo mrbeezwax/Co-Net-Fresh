@@ -1,5 +1,5 @@
 import Modal from "@mui/material/Modal";
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -9,6 +9,7 @@ import bgd from "./background.jpeg";
 import axios from "axios";
 import styles from "./main.module.css";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate, Link } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -26,7 +27,6 @@ const useStyles = makeStyles(() => ({
     padding: useTheme().spacing(1),
     alignItems: "center",
     justifyContent: "center",
-
     overflow: "hidden",
   },
   paper: {
@@ -49,17 +49,24 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Login = ({ history }) => {
+const Login = () => {
   const classes = useStyles();
   const rootRef = React.useRef(null);
+  const navigate = useNavigate();
 
-  axios
-    .get("http://localhost:3001/user/currentuser", { withCredentials: true })
-    .then((json) => {
-      if (json.data.username !== "Guest") {
-        history.push("/Feed");
-      }
-    });
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/users/currentuser", { withCredentials: true })
+      .then((json) => {
+        if (json.data.username !== "Guest") {
+          navigate("/Feed");
+        }
+      });
+  }, [navigate]);
+
+  const handleSteamLogin = () => {
+    window.location.href = "http://localhost:3001/users/auth/steam";
+  };
 
   return (
     <div className={styles.bgdImage} ref={rootRef}>
@@ -101,9 +108,22 @@ const Login = ({ history }) => {
                       variant="contained"
                       color="primary"
                       className={classes.submit}
-                      onClick={() => history.push("/signup")}
+                      component={Link}
+                      to="/signup"
                     >
                       Sign up with Email
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      type="button"
+                      fullWidth
+                      variant="contained"
+                      color="secondary"
+                      className={classes.submit}
+                      onClick={handleSteamLogin}
+                    >
+                      Sign in with Steam
                     </Button>
                   </Grid>
                   <Grid item xs={12}></Grid>
@@ -124,10 +144,10 @@ const Login = ({ history }) => {
                       className={classes.links}
                       display="inline"
                       color="primary"
-                      component="h2"
+                      component={Link}
+                      to="/signin"
                       fontsize={18}
                       align="center"
-                      onClick={() => history.push("/signin")}
                       id="server-modal-title"
                     >
                       {" "}

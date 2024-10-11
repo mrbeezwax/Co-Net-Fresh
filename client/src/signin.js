@@ -9,6 +9,7 @@ import axios from "axios";
 import styles from "./main.module.css";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -42,7 +43,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function onSignIn(e, history, pass, em) {
+function onSignIn(e, navigate, pass, em) {
   e.preventDefault();
   const password = pass;
   const email = em;
@@ -59,9 +60,8 @@ function onSignIn(e, history, pass, em) {
       }
     )
     .then((json) => {
-      // console.log(json.data);
       if (json.data.success) {
-        history.push("/Feed");
+        navigate("/Feed");
       } else {
         console.log("SIGN IN FAILED");
         document.getElementById("errorMessage").innerText = json.data.message;
@@ -69,12 +69,12 @@ function onSignIn(e, history, pass, em) {
     });
 }
 
-export default function Login(props) {
-  const { history } = props;
+export default function SignIn() {
   const classes = useStyles();
   const rootRef = React.useRef(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className={styles.bgdImage} ref={rootRef}>
@@ -145,7 +145,7 @@ export default function Login(props) {
                     color="primary"
                     id="signinButton"
                     className={classes.submit}
-                    onClick={(e) => onSignIn(e, history, password, email)}
+                    onClick={(e) => onSignIn(e, navigate, password, email)}
                   >
                     Sign In
                   </Button>

@@ -9,6 +9,98 @@ const jwt = require("jsonwebtoken");
 const sanitize = require("sanitize");
 const bcrypt = require("bcryptjs");
 
+router.get(
+  "/auth/steam",
+  (req, res, next) => {
+    console.log("Initiating Steam authentication");
+    next();
+  },
+  passport.authenticate("steam", { failureRedirect: "/" })
+);
+
+router.get(
+  "/auth/steam/return",
+  (req, res, next) => {
+    console.log("Received Steam authentication callback");
+    next();
+  },
+  passport.authenticate("steam", { failureRedirect: "/" }),
+  async function (req, res) {
+    console.log("Steam authentication successful", { user: req.user });
+
+    try {
+      // Find or create user based on Steam ID
+      let user = await UserModel.findOne({ steamId: req.user.id });
+      if (!user) {
+        user = new UserModel({
+          steamId: req.user.id,
+          username: req.user.displayName,
+          profilePhoto: req.user.photos[2].value,
+        });
+        await user.save();
+        console.log("New user created from Steam authentication", user);
+      } else {
+        console.log("Existing user logged in via Steam", user);
+      }
+
+      // Generate JWT token
+      const payload = {
+        id: user.id,
+        username: user.username,
+        steamId: user.steamId,
+      };
+
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: 3600 },
+        (err, token) => {
+          if (err) {
+            console.error("Error signing token", err);
+            return res.redirect("/login?error=token_error");
+          }
+          // Redirect to the client-side route with the token
+          res.redirect(`/auth-success?token=${token}`);
+        }
+      );
+    } catch (error) {
+      console.error("Error in Steam authentication", error);
+      res.redirect("/login?error=auth_error");
+    }
+  }
+);
+
+router.get(
+  "/currentuser",
+  passport.authenticate("jwt", { failureRedirect: "/" }),
+  (req, res) => {
+    if (req.user === undefined) {
+      return res.json({
+        username: "Guest",
+      });
+    } else {
+      return res.json({
+        username: req.user.username,
+        email: req.user.emailAddress,
+        bio: req.user.bio,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        profilePhoto: req.user.profilePhoto,
+        timeZone: req.user.timeZone,
+        userTags: req.user.userTags,
+        playerRep: req.user.playerRep,
+        votedPosts: req.user.votedPosts,
+        friends: req.user.friends,
+        status: req.user.status,
+        forumPosts: req.user.forumPosts,
+        currentPartyId: req.user.currentPartyId,
+        games: req.user.games,
+        steamId: req.user.steamId,
+      });
+    }
+  }
+);
+
 // Create a user
 router.post(
   "/signup",
